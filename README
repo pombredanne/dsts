@@ -1,0 +1,44 @@
+Development HOWTO
+=================
+
+Installing the package
+----------------------
+
+To install the library on the system, run:
+
+python setup.py install
+
+Installing the development environment
+--------------------------------------
+
+The code comes with an installation script that setups an development environment allowing further changes to be made to the code or to run additional tests. This installation script automatically downloads and installs the necessary packages. The development environment is installed within a python virtual environment, which means it will not install any global packages and perform changes affecting the machine's python intrepretter.
+
+After cloning the repository the development environment can be installed byrunning the following:
+
+$ scripts/install_dev_env.sh
+
+The installation script requires virtualenv to be installed. 
+
+This will create a symbolic link between in the lib directory pointing to the src directory. This allows one to import the data structures from a python intrepretter running in an activated virtual environment, e.g:
+
+"from dsts.suffix_array import SuffixArray"
+
+Running the test suit
+---------------------
+
+Once the development environment has been installed one can run a test suit on the suffix array. The test suit relies on the nosetest framework which should have been installed by the installation script.
+
+To run tests:
+
+$ nosetests
+
+Also, nosetests can be used to show the tested coverage of the code. The coverage package is also installed automatically in the virtual environment by the installation script.
+
+$nosetests --with-coverage
+
+For more verbosity:
+
+$nosetests -v --with-coverage
+
+See notetest for more information (http://nose.readthedocs.org/en/latest/).
+
