@@ -1,3 +1,11 @@
 .coverage
 *.pyc
 *.py~
+
+# Created by distutils
+build/
+man/
+lib/
+local/
+include/
+bin/
