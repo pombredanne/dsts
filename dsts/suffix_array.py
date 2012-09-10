@@ -11,6 +11,7 @@ class SuffixArray:
         self.suffix_array.sort()
         self.duplicates = {}
         self.duplicates_pos = {}
+        self.duplicates_pos_lcp = {}
         self.repetitions = []
         
     def return_array_as_string(self):
@@ -45,18 +46,24 @@ class SuffixArray:
 
     def find_all_duplicates(self):
         """ Searches for all duplicate substrings """
-        duplicates = {}
         for i in range(len(self.suffix_array)-1,-1,-1): # for each item in suffix array counting backwards
             for j in range(len(self.suffix_array[i]),0,-1): # for each character in row counting backwards
                 self.__search_backwards_for_suffix(i, j)
         
         for position in self.duplicates_pos:
+            high = 0 # Use counter to keep track of largest length of string at given position
+            tmp_str = "" # Use to keep track of largest string at given position
             for string in self.duplicates_pos[position]:
+                # Record position where string occurs
                 try:
-                    self.duplicates[string].append(position)
+                    self.duplicates[string].append(position) 
                 except:
                     self.duplicates[string] = [position,]
-            
+                # Record where largest string occurs
+                if high < len(string):
+                    high = len(string)
+                    tmp_str = string
+            self.duplicates_pos_lcp[position] = tmp_str             
 
     def get_duplicate_substrings(self):
         """ Returns substrings that appear more than once along their positions """
