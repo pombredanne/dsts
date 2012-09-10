@@ -23,6 +23,19 @@ This will create a symbolic link between in the lib directory pointing to the sr
 
 "from dsts.suffix_array import SuffixArray"
 
+Activating the development environment
+--------------------------------------
+
+The development environment can be activated using the standard virtual environment scripts, which should have been installed when the development environment was installed, that is:
+
+$ source bin/activate
+
+And to deactivate it:
+
+$ deactivate
+
+Note, if you want to install the library outside the virtual environment using "python setup.py install" make sure to first deactivate the virtual environment, or run the installation command in a seperate shell.
+
 Running the test suit
 ---------------------
 
