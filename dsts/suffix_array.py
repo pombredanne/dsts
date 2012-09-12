@@ -1,4 +1,5 @@
 from pprint import pprint
+from datastore import datastore 
 
 
 class SuffixArray:
@@ -9,10 +10,9 @@ class SuffixArray:
         for i in range(len(self.str)):
             self.suffix_array.append(self.str[i:len(self.str)])
         self.suffix_array.sort()
-        self.duplicates = {}
-        self.duplicates_pos = {}
         self.duplicates_pos_lcp = {}
         self.repetitions = []
+        self.ds = datastore()
         
     def return_array_as_string(self):
         """ Return the contents of the array """
@@ -48,34 +48,52 @@ class SuffixArray:
         """ Searches for all duplicate substrings """
         for i in range(len(self.suffix_array)-1,-1,-1): # for each item in suffix array counting backwards
             for j in range(len(self.suffix_array[i]),0,-1): # for each character in row counting backwards
-                self.__search_backwards_for_suffix(i, j)
-        
-        for position in self.duplicates_pos:
-            high = 0 # Use counter to keep track of largest length of string at given position
-            tmp_str = "" # Use to keep track of largest string at given position
-            for string in self.duplicates_pos[position]:
-                # Record position where string occurs
-                try:
-                    self.duplicates[string].append(position) 
-                except:
-                    self.duplicates[string] = [position,]
-                # Record where largest string occurs
-                if high < len(string):
-                    high = len(string)
-                    tmp_str = string
-            self.duplicates_pos_lcp[position] = tmp_str             
+                self.__search_backwards_for_suffix(i, j)      
 
-    def get_duplicate_substrings(self):
+    def get_duplicates(self):
         """ Returns substrings that appear more than once along their positions """
-        dict_tmp = {}
-        for key in self.duplicates:
-            dict_tmp[key] = list(self.duplicates[key])
+        return self.ds.get_duplicates()
 
-        return dict_tmp
+    def get_duplicate_positions_as_dict(self):
+        """ Returns positions where duplicate substrings start, along with strings as a dictionary """
+        return self.ds.get_duplicate_positions_as_dict()
 
-    def get_duplicate_positions(self,padding=False):
-        """ Returns positions that are the starting position for duplicate substrings """
-        return self.duplicates_pos
+    def get_duplicate_substrings_as_dict(self):
+        """ Returns substrings that appear more than once long their positions as a dictionary """
+        return self.ds.get_duplicate_substrings_as_dict()
+
+    def get_duplicate_substrings_and_count(self):
+        """ Return repeating substrings, along with the number of occurances """
+        return self.ds.get_duplicate_substrings_and_count()
+
+    def get_duplicate_positions_and_largest_size(self):
+        """ Returns positions where duplicate strings start, along with size of largest string 
+        returns: List of tuples. e.g. [(pos1, length1), (pos2, length2), etc)
+        """
+        return self.ds.get_duplicate_positions_and_largest_string_size()
+
+    def get_substring_length_and_replicas(self):
+        """ Returns (lengths, replicas, occurances) for duplicate strings.
+        :returns: list of (lengths, replicas, occurances) tuples. For example, (2, 4, 3) means they are
+                  three strings which have length of two and appear on four seperate occasions.
+        """
+        return self.ds.get_substring_length_and_replicas()
+
+    def get_max_substring_size_timeseries(self):
+        """ Returns a timeseries with the largest sizes of substrings at each point of the string 
+        returns: Vector of n integers, where n is the size of the original string.
+                 Empty parts of the string with no duplicate strings are padded with "0".
+        """
+        i = 0
+        time_series = []
+        for pos, length in self.ds.get_duplicate_positions_and_largest_string_size():
+            while i <= pos:
+                if i == pos:
+                    time_series.append(length)
+                else:
+                    time_series.append(0)
+                i = i + 1
+        return time_series
 
     def __search_backwards_for_suffix(self, sa_pos, endpoint):
         """ Searches for prefix backwards from given position
@@ -86,15 +104,5 @@ class SuffixArray:
         i = sa_pos - 1 # Move pointer to row adjecent to the search parameter in suffix array
         if self.suffix_array[i].startswith(string): # prefix found
             # Keep track in each position what duplicate duplicated substrings appear
-            try:
-                self.duplicates_pos[self.get_pos(i)].append(string)
-                self.duplicates_pos[self.get_pos(sa_pos)].append(string)
-            except KeyError:
-                self.duplicates_pos[self.get_pos(i)] = [string,]
-                self.duplicates_pos[self.get_pos(sa_pos)] = [string,]
-            # Keep track of duplicated substrings and where they appear in the original string
-            #try:
-            #    self.duplicates[string].add(self.get_pos(i))
-            #    self.duplicates[string].add(self.get_pos(sa_pos))
-            #except KeyError:
-            #    self.duplicates[string] = Set([self.get_pos(i), self.get_pos(sa_pos)])
+            self.ds.store_duplicate_substring(string, self.get_pos(i))
+            self.ds.store_duplicate_substring(string, self.get_pos(sa_pos))
