@@ -53,7 +53,7 @@ class datastore:
             self.cursor.execute('SELECT string, count(pos) FROM substrings group by string')
             return self.cursor.fetchall()
         
-        def get_substring_length_and_replicas(self):
+        def get_distinct_substring_length_and_replicas(self):
             """ Returns lengths, no of replicas, and occurances for duplicate substrings """
             self.cursor.execute('''SELECT k, r, count(*) from (
                                           SELECT length(string) as k, count(pos) as r 
@@ -61,5 +61,12 @@ class datastore:
                                           group by string)
                                    group by k, r''')
             return self.cursor.fetchall()
-        
+
+	def get_substring_length_and_replicas(self):
+            """ Returns lengths and no of rpelicas for duplicate substrings """
+	    self.cursor.execute('''SELECT length(string), count(pos) from substrings
+                                   group by string''')
+	    return self.cursor.fetchall()
+
+		
 

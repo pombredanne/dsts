@@ -72,10 +72,16 @@ class SuffixArray:
         """
         return self.ds.get_duplicate_positions_and_largest_string_size()
 
-    def get_substring_length_and_replicas(self):
-        """ Returns (lengths, replicas, occurances) for duplicate strings.
+    def get_distinct_substring_length_and_replicas(self):
+        """ Returns distinct (lengths, replicas, occurances) for duplicate strings.
         :returns: list of (lengths, replicas, occurances) tuples. For example, (2, 4, 3) means they are
                   three strings which have length of two and appear on four seperate occasions.
+        """
+        return self.ds.get_distinct_substring_length_and_replicas()
+
+    def get_substring_length_and_replicas(self):
+        """ Returns (lengths, replicas) for duplicate strings.
+        :returns: list of (lengths, replicas)
         """
         return self.ds.get_substring_length_and_replicas()
 

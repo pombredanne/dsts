@@ -79,12 +79,16 @@ class TestSuffixArray:
         timeseries = [2, 1, 0, 1, 0, 2, 1]
         assert_equal(self.sarray2.get_max_substring_size_timeseries(), timeseries)
     
-    def test_substring_length_and_replicas(self):
-        """ Request replicas no and lengths, and how many duplicate substrings match """
+    def test_distinct_substring_length_and_replicas(self):
+        """ Request distinct replicas no and lengths, and how many duplicate substrings match """
         data = [(1, 2, 1), (1, 3, 1), (2, 2, 1)]
+        assert_equal(self.sarray2.get_distinct_substring_length_and_replicas(), data)
+
+    def test_substring_length_and_replicas(self):
+        """ Request lengths and number of replicas for all substrings"""
+        data = [(1, 3), (2, 2), (1, 2)]  
         assert_equal(self.sarray2.get_substring_length_and_replicas(), data)
- 
-        
+    
         
 
         
