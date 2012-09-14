@@ -1,5 +1,7 @@
 from dsts.suffix_array import SuffixArray
-from nose.tools import assert_equal
+from nose.tools import assert_equal, raises
+from os import remove
+from os.path import exists
 from sets import Set
 
 class TestSuffixArray:
@@ -7,25 +9,61 @@ class TestSuffixArray:
     def setup_class(self):
         """ Initial configuration of TestSuffixArray, runs only once """
         self.test_str = ["zabcada trip123", "abcadab", "abc123abc12abca"]
-        self.sarray1 = SuffixArray(self.test_str[0])
-        self.sarray2 = SuffixArray(self.test_str[1])
-        self.sarray3 = SuffixArray(self.test_str[2])
+        self.sarray1 = SuffixArray('memory', string = self.test_str[0])
+        self.sarray2 = SuffixArray('memory', string = self.test_str[1])
+        self.sarray3 = SuffixArray('memory', string = self.test_str[2])
         self.sarray1.find_all_duplicates()
         self.sarray2.find_all_duplicates()
         self.sarray3.find_all_duplicates()
         self.sa_range = range(len(self.sarray1.suffix_array))
+        self.temporary_file = 'tmp/sample_test.db'
+
+    @classmethod
+    def teardown_class(self):
+        """ Finalise testing, runs only once at the end """
+        self.sarray1.close()
+        self.sarray2.close()
+        self.sarray3.close()
  
     def test_init(self):
         """ Test initialisation of the Suffix Array """
         assert_equal(self.sarray1.str, self.test_str[0])
-        # These should not be calculated by constructor
-        assert_equal(self.sarray1.repetitions, [])
         # Check that suffix array has been built properly
         test_array = []
         for i in self.sa_range:
             test_array.append(self.test_str[0][i:])
         assert_equal(self.sarray1.suffix_array, sorted(test_array))
-			
+
+    @raises(ValueError)
+    def test_validation_memory_and_filename(self):
+        """ Test constructor validation, 'memory' + filename """
+        sarray = SuffixArray('memory', 'sample_filename')  # filename should'nt be specified
+
+    @raises(ValueError)
+    def test_validation_memory_no_string(self):
+        """ Test constructor validation, 'memory' + no string """
+        sarray = SuffixArray('memory')  # string should be specified
+
+    @raises(ValueError)
+    def test_validation_load_no_filename(self):
+        """ Test constructor validation, 'load' and no filename """
+        sarray = SuffixArray('load')  # filename should be specified
+
+    @raises(ValueError)
+    def test_validation_load_and_string(self):
+        """ Test constructor validation, 'load' and string """
+        sarray = SuffixArray('load', 'sample file', 'test str')  # string should not be specified
+
+    @raises(ValueError)
+    def test_validation_save_no_filename(self):
+        """ Test constructor validation 'save' and no filename """
+        sarray = SuffixArray('save')  # filename should be specified
+
+    @raises(ValueError)
+    def test_validation_save_no_string(self):
+        """ Test constructor validation 'save' and no string """
+        sarray = SuffixArray('save', 'sample_file') # string should be specified
+
     def test_array_as_str(self):
        """ Test returnining suffix array as a string """
        tmp = ""
@@ -42,7 +80,7 @@ class TestSuffixArray:
         assert_equal(self.sarray1.search(' '), 7)     # search for a char within string
         assert_equal(self.sarray1.search('trip'), 8)  # search for a word within string
         assert_equal(self.sarray1.search('z'), 0)     # Search for character in the beginning
-        assert_equal(self.sarray1.search('za'), 0)    # Search for many characters in the beginning
+        assert_equal(self.sarray1.search('za'), 0)    # Search for 2 characters in the beginning
         assert_equal(self.sarray1.search('3'), 14)    # Seach for character in the end
         assert_equal(self.sarray1.search('123'), 12)  # Search for many characters in the end
         assert_equal(self.sarray1.search('y'), -1)    # Search for non existant character
@@ -88,7 +126,40 @@ class TestSuffixArray:
         """ Request lengths and number of replicas for all substrings"""
         data = [(1, 3), (2, 2), (1, 2)]  
         assert_equal(self.sarray2.get_substring_length_and_replicas(), data)
-    
+
+    def test_save_and_load_suffix_array(self):
+        """ Create a suffix array, save to disk, load it and use it """
+        # First we create the suffix array and save it to disk
+        if exists(self.temporary_file):  # Delete tmp file if it has been left from before
+            remove(self.temporary_file)  # Delete file if it is already there  
+        sarray = SuffixArray('save', 'tmp/sample_test.db', '12strin34strin56')
+        sarray.find_all_duplicates()
+        # Check that suffix array has been build properly
+        suffix_array = ['12strin34strin56', '2strin34strin56', '34strin56', '4strin56', '56', 
+                        '6', 'in34strin56', 'in56', 'n34strin56', 'n56', 'rin34strin56', 'rin56',
+                        'strin34strin56', 'strin56', 'trin34strin56', 'trin56']
+        assert_equal(sarray.suffix_array, suffix_array)
+        duplicates = [('i', 5), ('i', 12), (u'in', 5), ('in', 12), ('n', 6), ('n', 13), ('r', 4),
+                      ('r', 11), ('ri', 4), ('ri', 11), ('rin', 4), ('rin', 11), ('s', 2),
+                      ('s', 9), ('st', 2), ('st', 9), ('str', 2), ('str', 9), ('stri', 2),
+                      ('stri', 9), ('strin', 2), ('strin', 9), ('t', 3), ('t', 10), ('tr', 3), 
+                      ('tr', 10), ('tri', 3), ('tri', 10), ('trin', 3), ('trin', 10)]
+        # Check that the duplicates have been found
+        assert_equal(sarray.get_duplicates(), duplicates)
+        sarray.close()
+        sarray = None  # Deallocate memory
+        # Load the suffix array from disk
+        sarray = SuffixArray('load', 'tmp/sample_test.db')
+        # Check that the duplicated list has not changed
+        assert_equal(sarray.get_duplicates(), duplicates)
+        sarray.find_all_duplicates()
+        # Check that the duplicated list has not changed
+        assert_equal(sarray.get_duplicates(), duplicates)
+        # Check that suffix array has not been changed
+        assert_equal(sarray.suffix_array, suffix_array)
+        remove(self.temporary_file)  # Delete file if it is already there
+        
+        
         
 
         

@@ -20,5 +20,8 @@ pip install -r ${root_dir}/etc/requirements.txt # Install dev requirements
 cd $root_dir
 python setup.py install
 
+# Create tmp directory used for testing
+mkdir "${root_dir}/tmp"
+
 # Deactivate virtual environment
 deactivate

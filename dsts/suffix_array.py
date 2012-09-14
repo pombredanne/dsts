@@ -1,18 +1,55 @@
 from pprint import pprint
 from datastore import datastore 
-
-
+    
 class SuffixArray:
-    def __init__(self, string_to_parse):
-        """ Constructor, builds and sorts the array """
-        self.str = string_to_parse
-        self.suffix_array = []
-        for i in range(len(self.str)):
-            self.suffix_array.append(self.str[i:len(self.str)])
-        self.suffix_array.sort()
-        self.duplicates_pos_lcp = {}
-        self.repetitions = []
-        self.ds = datastore()
+    def __init__(self, operation, filename = None, string = None):
+        """ Constructor, builds and sorts the array
+        operation: 'memory', generate suffix array and store in memory
+                   'load', load suffix array from <filename>
+                   'save'. save suffix array to <filename>
+        filename: name of file, use only with load/save operation
+        string: string to process, use only with memory/save operation
+        """
+        self.suffix_array = None
+        # Input validation - filename and string options
+        if operation == 'memory':
+            if filename:
+                raise ValueError('Memory option is not compatible and filename')
+            if not string:
+                raise ValueError('Memory option requires a string to be provided')
+        elif operation == 'load': 
+            if not filename:
+                raise ValueError('Load option requires a filename to be specified')
+            if string:
+                raise ValueError('Load and string options not compatible')
+        elif operation == 'save': 
+            if not filename:
+                raise ValueError('Save option requires a filename to be specified')
+            if not string:
+                raise ValueError('Save option requires a string to be specified')
+
+        self.str = string
+        if self.str:
+            self.generate_suffix_array()
+
+        if operation == 'memory':
+            self.ds = datastore()
+        elif operation == 'load':
+            self.ds = datastore('load', filename = filename)
+            self.suffix_array = self.ds.load_suffix_array()
+        elif operation == 'save':
+            self.ds = datastore('save', filename = filename)
+            self.ds.save_suffix_array(self.suffix_array)
+        
+    def generate_suffix_array(self):
+        """ Generates the suffix array """
+        if self.str is None:
+            raise Exception('Source string not defined')
+        else:
+            self.suffix_array = [] # Deallocate memory
+            for i in range(len(self.str)):
+                self.suffix_array.append(self.str[i:len(self.str)])
+            self.suffix_array.sort()
         
     def return_array_as_string(self):
         """ Return the contents of the array """
@@ -46,9 +83,12 @@ class SuffixArray:
 
     def find_all_duplicates(self):
         """ Searches for all duplicate substrings """
-        for i in range(len(self.suffix_array)-1,-1,-1): # for each item in suffix array counting backwards
-            for j in range(len(self.suffix_array[i]),0,-1): # for each character in row counting backwards
-                self.__search_backwards_for_suffix(i, j)      
+        if self.str is None and self.suffix_array is not None:
+            #  Array was loaded, so we need define the string before we continue
+            self.str = self.suffix_array[0]
+        for i in range(len(self.suffix_array)-1,-1,-1):  # for each item in suffix array
+            for j in range(len(self.suffix_array[i]),0,-1):  # for each character in row
+                self.__search_backwards_for_suffix(i, j)
 
     def get_duplicates(self):
         """ Returns substrings that appear more than once along their positions """
@@ -103,12 +143,16 @@ class SuffixArray:
 
     def __search_backwards_for_suffix(self, sa_pos, endpoint):
         """ Searches for prefix backwards from given position
-        sa_pos = position in suffix array where prefix string to be searched is located
-        endpoint = terminating point for search prefix
+        sa_pos: position in suffix array where prefix string to be searched is located
+        endpoint: terminating point for search prefix
         """
         string = self.suffix_array[sa_pos][:endpoint]
-        i = sa_pos - 1 # Move pointer to row adjecent to the search parameter in suffix array
+        i = sa_pos - 1 # Move pointer to row adjecent to search parameter in suffix array
         if self.suffix_array[i].startswith(string): # prefix found
             # Keep track in each position what duplicate duplicated substrings appear
             self.ds.store_duplicate_substring(string, self.get_pos(i))
             self.ds.store_duplicate_substring(string, self.get_pos(sa_pos))
+
+    def close(self):
+        """ Closes database connection """
+        self.ds.close()
