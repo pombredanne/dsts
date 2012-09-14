@@ -49,9 +49,12 @@ Also, nosetests can be used to show the tested coverage of the code. The coverag
 
 $nosetests --with-coverage
 
-For more verbosity:
+For more verbosity, showing the tests:
 
 $nosetests -v --with-coverage
 
 See notetest for more information (http://nose.readthedocs.org/en/latest/).
 
+In order to test the latest code, one needs to stage it in the virtual environment lib/ directory. This can be done by running "python setup.py install" (without sudo), while the environment is activated. To save having to stage the code everytime one needs to run the tests, the following testing script can be used:
+
+$scripts/test.sh
