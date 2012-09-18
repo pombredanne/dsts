@@ -2,3 +2,5 @@ nose
 yolk
 coverage
 pep8
+flake8
+pylint

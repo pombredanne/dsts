@@ -1,3 +1,5 @@
+# Testing module for SuffixArray class. Uses nosetest.
+
 from dsts.suffix_array import SuffixArray
 from nose.tools import assert_equal, raises
 from os import remove
@@ -39,16 +41,19 @@ class TestSuffixArray:
     def test_validation_memory_and_filename(self):
         """ Test constructor validation, 'memory' + filename """
         sarray = SuffixArray('memory', 'sample_filename')  # filename should'nt be specified
+        sarray.close()
 
     @raises(ValueError)
     def test_validation_memory_no_string(self):
         """ Test constructor validation, 'memory' + no string """
         sarray = SuffixArray('memory')  # string should be specified
+        sarray.close()
 
     @raises(ValueError)
     def test_validation_load_no_filename(self):
         """ Test constructor validation, 'load' and no filename """
         sarray = SuffixArray('load')  # filename should be specified
+        sarray.close()
 
     @raises(ValueError)
     def test_validation_load_and_string(self):

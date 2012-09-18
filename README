@@ -58,3 +58,22 @@ See notetest for more information (http://nose.readthedocs.org/en/latest/).
 In order to test the latest code, one needs to stage it in the virtual environment lib/ directory. This can be done by running "python setup.py install" (without sudo), while the environment is activated. To save having to stage the code everytime one needs to run the tests, the following testing script can be used:
 
 $scripts/test.sh
+
+Pep8, flake8, pyflakes, pylint compliance
+---------------------------------
+
+In order to insure good quality code in this package, a number of code compliance and analysis packages are used. 
+
+There is a git pre-commit hook in the script directory. The installation of the virtual environment enables this hook by making a symbolic link to the .git directory. This script checks stages files for PEP8 compliance before commiting staged files.
+
+One of the scripts can be used to check for pep8 and pyflakes (using the flake8) compliance:
+
+$scripts/check.sh
+
+In addition the installation script also installed the pylint package, which also can be used to improve the code.
+
+More information can be found regarding the packages can be found here:
+pep8 - http://www.python.org/dev/peps/pep-0008/
+flake8 - https://bitbucket.org/tarek/flake8
+pyflakes - https://launchpad.net/pyflakes
+pylint - http://www.logilab.org/857
