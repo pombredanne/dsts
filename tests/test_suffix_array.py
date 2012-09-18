@@ -4,14 +4,15 @@ from os import remove
 from os.path import exists
 from sets import Set
 
+
 class TestSuffixArray:
     @classmethod
     def setup_class(self):
         """ Initial configuration of TestSuffixArray, runs only once """
         self.test_str = ["zabcada trip123", "abcadab", "abc123abc12abca"]
-        self.sarray1 = SuffixArray('memory', string = self.test_str[0])
-        self.sarray2 = SuffixArray('memory', string = self.test_str[1])
-        self.sarray3 = SuffixArray('memory', string = self.test_str[2])
+        self.sarray1 = SuffixArray('memory', string=self.test_str[0])
+        self.sarray2 = SuffixArray('memory', string=self.test_str[1])
+        self.sarray3 = SuffixArray('memory', string=self.test_str[2])
         self.sarray1.find_all_duplicates()
         self.sarray2.find_all_duplicates()
         self.sarray3.find_all_duplicates()
@@ -24,7 +25,7 @@ class TestSuffixArray:
         self.sarray1.close()
         self.sarray2.close()
         self.sarray3.close()
- 
+
     def test_init(self):
         """ Test initialisation of the Suffix Array """
         assert_equal(self.sarray1.str, self.test_str[0])
@@ -62,18 +63,18 @@ class TestSuffixArray:
     @raises(ValueError)
     def test_validation_save_no_string(self):
         """ Test constructor validation 'save' and no string """
-        sarray = SuffixArray('save', 'sample_file') # string should be specified
+        sarray = SuffixArray('save', 'sample_file')  # string should be specified
 
     def test_array_as_str(self):
-       """ Test returnining suffix array as a string """
-       tmp = ""
-       for i in self.sa_range:
-           tmp = tmp + "%s %s\n" % (i, self.sarray1.suffix_array[i])
-       assert_equal(self.sarray1.return_array_as_string(), tmp)
+        """ Test returnining suffix array as a string """
+        tmp = ""
+        for i in self.sa_range:
+            tmp = tmp + "%s %s\n" % (i, self.sarray1.suffix_array[i])
+        assert_equal(self.sarray1.return_array_as_string(), tmp)
 
     def test_return_original_string(self):
         """ Test returning original string provided to constructor """
-        assert_equal(self.sarray1.return_original_str(), self.test_str[0]) 
+        assert_equal(self.sarray1.return_original_str(), self.test_str[0])
 
     def test_search(self):
         """ Search for substings """
@@ -84,31 +85,30 @@ class TestSuffixArray:
         assert_equal(self.sarray1.search('3'), 14)    # Seach for character in the end
         assert_equal(self.sarray1.search('123'), 12)  # Search for many characters in the end
         assert_equal(self.sarray1.search('y'), -1)    # Search for non existant character
-    
+
     def test_find_all_duplicates(self):
-        """ Find all positions with duplicate substrings, return tuples (pos,string) """  
-        repeated_substrings = [('ab', 0), ('a', 0), ('b', 1), ('a', 3), ('ab', 5), ('a', 5), ('b', 6)] 
+        """ Find all positions with duplicate substrings, return tuples (pos,string) """
+        repeated_substrings = [('ab', 0), ('a', 0), ('b', 1), ('a', 3), ('ab', 5), ('a', 5), ('b', 6)]
         assert_equal(Set(self.sarray2.get_duplicates()), Set(repeated_substrings))
 
     def test_find_all_duplicate_positions_as_dict(self):
-        """ Find all starting positions for duplicates, along with strings as dict """      
-        repeated_substrings = {0 : ['a', 'ab'], 1 : ['b'], 3 : ['a'], 5: ['a', 'ab'], 6 : ['b']}
+        """ Find all starting positions for duplicates, along with strings as dict """
+        repeated_substrings = {0: ['a', 'ab'], 1: ['b'], 3: ['a'], 5: ['a', 'ab'], 6: ['b']}
         assert_equal(self.sarray2.get_duplicate_positions_as_dict(), repeated_substrings)
-        
 
     def test_find_all_duplicate_substrings_as_dict(self):
         """ Find all duplicate substrings and their positions as a dictionary """
-        repeated_substrings = {'a' : [0, 3, 5], 'b' : [1, 6], 'ab' : [0, 5]}
+        repeated_substrings = {'a': [0, 3, 5], 'b': [1, 6], 'ab': [0, 5]}
         assert_equal(self.sarray2.get_duplicate_substrings_as_dict(), repeated_substrings)
 
     def test_get_duplicate_substrings_and_count(self):
         """ Find all duplicate substrings and how many times they appear """
-        repeated_substrings = [('a', 3), ('ab', 2), ('b', 2)] 
+        repeated_substrings = [('a', 3), ('ab', 2), ('b', 2)]
         assert_equal(self.sarray2.get_duplicate_substrings_and_count(), repeated_substrings)
 
     def test_get_duplicate_positions_and_largest_string_size(self):
         """ Return positions for duplicate substrings along with size of largest substring """
-        repeated_positions = [(0, 2), (1, 1), (3, 1), (5, 2), (6,1)]
+        repeated_positions = [(0, 2), (1, 1), (3, 1), (5, 2), (6, 1)]
         assert_equal(self.sarray2.get_duplicate_positions_and_largest_size(), repeated_positions)
 
     def test_get_max_substring_size_timeseries(self):
@@ -116,7 +116,7 @@ class TestSuffixArray:
         # self.test_str2 = "abcadab"
         timeseries = [2, 1, 0, 1, 0, 2, 1]
         assert_equal(self.sarray2.get_max_substring_size_timeseries(), timeseries)
-    
+
     def test_distinct_substring_length_and_replicas(self):
         """ Request distinct replicas no and lengths, and how many duplicate substrings match """
         data = [(1, 2, 1), (1, 3, 1), (2, 2, 1)]
@@ -124,25 +124,25 @@ class TestSuffixArray:
 
     def test_substring_length_and_replicas(self):
         """ Request lengths and number of replicas for all substrings"""
-        data = [(1, 3), (2, 2), (1, 2)]  
+        data = [(1, 3), (2, 2), (1, 2)]
         assert_equal(self.sarray2.get_substring_length_and_replicas(), data)
 
     def test_save_and_load_suffix_array(self):
         """ Create a suffix array, save to disk, load it and use it """
         # First we create the suffix array and save it to disk
         if exists(self.temporary_file):  # Delete tmp file if it has been left from before
-            remove(self.temporary_file)  # Delete file if it is already there  
+            remove(self.temporary_file)  # Delete file if it is already there
         sarray = SuffixArray('save', 'tmp/sample_test.db', '12strin34strin56')
         sarray.find_all_duplicates()
         # Check that suffix array has been build properly
-        suffix_array = ['12strin34strin56', '2strin34strin56', '34strin56', '4strin56', '56', 
+        suffix_array = ['12strin34strin56', '2strin34strin56', '34strin56', '4strin56', '56',
                         '6', 'in34strin56', 'in56', 'n34strin56', 'n56', 'rin34strin56', 'rin56',
                         'strin34strin56', 'strin56', 'trin34strin56', 'trin56']
         assert_equal(sarray.suffix_array, suffix_array)
         duplicates = [('i', 5), ('i', 12), (u'in', 5), ('in', 12), ('n', 6), ('n', 13), ('r', 4),
                       ('r', 11), ('ri', 4), ('ri', 11), ('rin', 4), ('rin', 11), ('s', 2),
                       ('s', 9), ('st', 2), ('st', 9), ('str', 2), ('str', 9), ('stri', 2),
-                      ('stri', 9), ('strin', 2), ('strin', 9), ('t', 3), ('t', 10), ('tr', 3), 
+                      ('stri', 9), ('strin', 2), ('strin', 9), ('t', 3), ('t', 10), ('tr', 3),
                       ('tr', 10), ('tri', 3), ('tri', 10), ('trin', 3), ('trin', 10)]
         # Check that the duplicates have been found
         assert_equal(sarray.get_duplicates(), duplicates)
@@ -158,12 +158,3 @@ class TestSuffixArray:
         # Check that suffix array has not been changed
         assert_equal(sarray.suffix_array, suffix_array)
         remove(self.temporary_file)  # Delete file if it is already there
-        
-        
-        
-
-        
-        
-        
-        
-

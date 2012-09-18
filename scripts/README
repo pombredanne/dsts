@@ -1,0 +1,8 @@
+Scripts
+-------
+
+install_dev_env.sh -- Installation script establishing virtual environment
+test.sh  -- Testing script that runs testing suite
+update.sh -- Update script that upgrades packages installed in virtual environment
+pre-commit -- GIT pre commit hook that checks staged code for PEP8 compliance
+check.sh -- Check all python source files for pep8 compliance in 'dsts' and 'test' directories

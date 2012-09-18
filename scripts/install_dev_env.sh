@@ -20,8 +20,17 @@ pip install -r ${root_dir}/etc/requirements.txt # Install dev requirements
 cd $root_dir
 python setup.py install
 
-# Create tmp directory used for testing
-mkdir "${root_dir}/tmp"
+# Create tmp directory used for testing if it does not exist
+tmp_dir="${root_dir}/tmp"
+if ! [ -d ${temp_dir}]; then
+	mkdir ${temp_dir}
+fi
+
+# If it does not exist, create symbolic link enabling pre-commit .git hook
+symlink_target=${root_dir}/.git/hooks/pre-commit
+if ! [ -L ${symlink_target} ]; then
+	ln -s ${root_dir}/scripts/pre-commit ${symlink_target}
+fi
 
 # Deactivate virtual environment
 deactivate
