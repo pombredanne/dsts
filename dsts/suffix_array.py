@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Suffix Array class: Provides functionality for building suffix array from a text string, sorting it,
 # 		      searching it and finding all substring duplicates in the provided string
 

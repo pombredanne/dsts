@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Defines class necessary for suffix array persistance
 
 from sqlite3 import connect, IntegrityError

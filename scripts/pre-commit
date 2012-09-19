@@ -5,5 +5,5 @@ if [ -n "$FILES" ]; then
 	pep8 -r --ignore=E501 $FILES
 	return_value=$?
 	echo Commit cancelled
-	return $return_value
+	exit $return_value
 fi

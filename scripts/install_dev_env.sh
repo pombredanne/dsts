@@ -8,7 +8,13 @@ lib_dir="${root_dir}/lib/python2.7/site-packages/${package_name}" # Virtual env'
 bin_dir="${root_dir}/bin" # Virtual env's python bin dir
 
 # Install virtual environment
-virtualenv ${root_dir}
+if command -v virtualenv; then 
+	echo "Found virtualenv installed on system"
+	virtualenv ${root_dir}
+else
+	echo "Error: Please install virtualenv on your system first"
+	exit 1
+fi
 
 # Activate virtual environment
 source ${bin_dir}/activate

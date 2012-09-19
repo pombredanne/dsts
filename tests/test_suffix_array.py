@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Testing module for SuffixArray class. Uses nosetest.
 
 from dsts.suffix_array import SuffixArray
@@ -59,16 +61,19 @@ class TestSuffixArray:
     def test_validation_load_and_string(self):
         """ Test constructor validation, 'load' and string """
         sarray = SuffixArray('load', 'sample file', 'test str')  # string should not be specified
+        sarray.close()
 
     @raises(ValueError)
     def test_validation_save_no_filename(self):
         """ Test constructor validation 'save' and no filename """
         sarray = SuffixArray('save')  # filename should be specified
+        sarray.close()
 
     @raises(ValueError)
     def test_validation_save_no_string(self):
         """ Test constructor validation 'save' and no string """
         sarray = SuffixArray('save', 'sample_file')  # string should be specified
+        sarray.close()
 
     def test_array_as_str(self):
         """ Test returnining suffix array as a string """
