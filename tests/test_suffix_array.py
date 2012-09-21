@@ -75,6 +75,12 @@ class TestSuffixArray:
         sarray = SuffixArray('save', 'sample_file')  # string should be specified
         sarray.close()
 
+    @raises(ValueError)
+    def test_validation_invalid_operation(self):
+        """ Test constructor with invalid operation type """
+        sarray = SuffixArray('something')  # 'memory', 'load', or 'save' should be specified
+        sarray.close()
+
     def test_array_as_str(self):
         """ Test returnining suffix array as a string """
         tmp = ""

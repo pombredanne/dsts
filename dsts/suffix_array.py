@@ -33,6 +33,8 @@ class SuffixArray:
                 raise ValueError('Save option requires a filename to be specified')
             if not string:
                 raise ValueError('Save option requires a string to be specified')
+        else:
+            raise ValueError("Provide valid operation: 'memory', 'load', or 'save'")
 
         self.str = string
         if self.str:
