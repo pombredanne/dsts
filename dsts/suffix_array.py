@@ -45,25 +45,33 @@ class SuffixArray:
         elif operation == 'load':
             self.ds = datastore('load', filename=filename)
             self.suffix_array = self.ds.load_suffix_array()
+            self.str = self.ds.load_document()
         elif operation == 'save':
             self.ds = datastore('save', filename=filename)
-            self.ds.save_suffix_array(self.suffix_array)
+            self.ds.save_suffix_array(self.suffix_array, self.str)
 
     def generate_suffix_array(self):
         """ Generates the suffix array """
         if self.str is None:
             raise Exception('Source string not defined')
         else:
-            self.suffix_array = []  # Deallocate memory
-            for i in range(len(self.str)):
-                self.suffix_array.append(self.str[i:len(self.str)])
-            self.suffix_array.sort()
+            self.suffix_array = range(len(self.str))
+            self.suffix_array.sort(self.__sarray_sort)
+
+    def __sarray_sort(self, x, y):
+        """ Allows integers to be sorted by comparing substrings in document string """
+        if self.str[x:] > self.str[y:]:
+            return 1
+        elif self.str[x:] == self.str[y:]:
+            return 0
+        else:
+            return -1
 
     def return_array_as_string(self):
         """ Return the contents of the array """
         tmp_str = ""
         for i in range(len(self.suffix_array)):
-            tmp_str = tmp_str + "%s %s\n" % (i, self.suffix_array[i])
+            tmp_str = tmp_str + "%s %s\n" % (i, self.get_sarray_item(i))
         return tmp_str
 
     def return_original_str(self):
@@ -77,9 +85,9 @@ class SuffixArray:
         pprint(self.suffix_array)
         while hi > lo:
             middle = (lo + hi) / 2
-            if target == self.suffix_array[middle][0:len(target)]:
+            if target == self.get_sarray_item(middle)[0:len(target)]:
                 return self.get_pos(middle)
-            elif target > self.suffix_array[middle][0:len(target)]:
+            elif target > self.get_sarray_item(middle)[0:len(target)]:
                 lo = middle + 1
             else:
                 hi = middle
@@ -87,16 +95,31 @@ class SuffixArray:
 
     def get_pos(self, pos):
         """ Returns the position of the suffix array element in the original string """
-        return len(self.str) - len(self.suffix_array[pos])
+        return len(self.str) - len(self.get_sarray_item(pos))
 
     def find_all_duplicates(self):
         """ Searches for all duplicate substrings """
         if self.str is None and self.suffix_array is not None:
             #  Array was loaded, so we need define the string before we continue
-            self.str = self.suffix_array[0]
-        for i in range(len(self.suffix_array) - 1, -1, -1):  # for each item in suffix array
-            for j in range(len(self.suffix_array[i]), 0, -1):  # for each character in row
+            self.str = self.get_sarray_item(0)
+        for i in range(len(self.suffix_array) - 1, 0, -1):  # for each item in suffix array
+            for j in range(self.get_sarray_item_len(i), 0, -1):  # for each character in row
                 self.__search_backwards_for_suffix(i, j)
+
+    def get_sarray_item(self, i):
+        """ Returns row from suffix array at position i """
+        return self.str[self.suffix_array[i]:]
+
+    def get_sarray_item_len(self, i):
+        """ Returns row length from suffix array at position i """
+        return len(self.str[self.suffix_array[i]:])
+
+    def get_suffix_array(self):
+        """ Returns the suffix array """
+        tmp_array = []
+        for i in self.suffix_array:
+            tmp_array.append(self.str[i:])
+        return tmp_array
 
     def get_duplicates(self):
         """ Returns substrings that appear more than once along their positions """
@@ -122,7 +145,7 @@ class SuffixArray:
 
     def get_distinct_substring_length_and_replicas(self):
         """ Returns distinct (lengths, replicas, occurances) for duplicate strings.
-        :returns: list of (lengths, replicas, occurances) tuples. For example, (2, 4, 3) means they are
+        :returns: list of (lengths, replicas, occurances) tuples. E.g., (2, 4, 3) means they are
                   three strings which have length of two and appear on four seperate occasions.
         """
         return self.ds.get_distinct_substring_length_and_replicas()
@@ -154,9 +177,9 @@ class SuffixArray:
         sa_pos: position in suffix array where prefix string to be searched is located
         endpoint: terminating point for search prefix
         """
-        string = self.suffix_array[sa_pos][:endpoint]
+        string = self.get_sarray_item(sa_pos)[:endpoint]
         i = sa_pos - 1  # Move pointer to row adjecent to search parameter in suffix array
-        if self.suffix_array[i].startswith(string):  # prefix found
+        if self.get_sarray_item(i).startswith(string):  # prefix found
             # Keep track in each position what duplicate duplicated substrings appear
             self.ds.store_duplicate_substring(string, self.get_pos(i))
             self.ds.store_duplicate_substring(string, self.get_pos(sa_pos))

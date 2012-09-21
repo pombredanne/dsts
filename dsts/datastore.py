@@ -6,7 +6,8 @@ from sqlite3 import connect, IntegrityError
 
 create_tables_sql = """
 CREATE TABLE IF NOT EXISTS substrings (string text, pos integer, PRIMARY KEY (string, pos));
-CREATE TABLE IF NOT EXISTS suffix_array (suffix text);
+CREATE TABLE IF NOT EXISTS suffix_array (suffix integer);
+CREATE TABLE IF NOT EXISTS data (key string, value string, PRIMARY KEY (key, value));
 """
 
 
@@ -32,10 +33,11 @@ class datastore:
         except IntegrityError:
             pass
 
-    def save_suffix_array(self, suffix_array):
+    def save_suffix_array(self, suffix_array, doc):
         """ Save suffix array into the database """
         for line in suffix_array:
             self.cursor.execute('INSERT INTO suffix_array VALUES (?)', (line,))
+        self.cursor.execute("INSERT INTO data VALUES ('document', ?)", (doc,))
         self.conn.commit()
 
     def load_suffix_array(self):
@@ -44,6 +46,11 @@ class datastore:
         self.cursor.execute('SELECT suffix FROM suffix_array')
         [suffix_array.append(line[0]) for line in self.cursor.fetchall()]
         return suffix_array
+
+    def load_document(self):
+        """ Load complete string from database """
+        self.cursor.execute("SELECT value from data where key = 'document'")
+        return self.cursor.fetchone()[0]
 
     def get_duplicate_positions_as_dict(self):
         """ Get positions where duplicate strings start, along with duplicate strings"""

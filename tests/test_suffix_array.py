@@ -37,7 +37,7 @@ class TestSuffixArray:
         test_array = []
         for i in self.sa_range:
             test_array.append(self.test_str[0][i:])
-        assert_equal(self.sarray1.suffix_array, sorted(test_array))
+        assert_equal(self.sarray1.get_suffix_array(), sorted(test_array))
 
     @raises(ValueError)
     def test_validation_memory_and_filename(self):
@@ -85,7 +85,7 @@ class TestSuffixArray:
         """ Test returnining suffix array as a string """
         tmp = ""
         for i in self.sa_range:
-            tmp = tmp + "%s %s\n" % (i, self.sarray1.suffix_array[i])
+            tmp = tmp + "%s %s\n" % (i, self.sarray1.get_sarray_item(i))
         assert_equal(self.sarray1.return_array_as_string(), tmp)
 
     def test_return_original_string(self):
@@ -133,6 +133,12 @@ class TestSuffixArray:
         timeseries = [2, 1, 0, 1, 0, 2, 1]
         assert_equal(self.sarray2.get_max_substring_size_timeseries(), timeseries)
 
+    def test_suffix_array_item(self):
+        """ Get suffix array items """
+        array = ['ab', 'abcadab', 'adab', 'b', 'bcadab', 'cadab', 'dab']
+        for i in range(len(array)):
+            assert_equal(self.sarray2.get_sarray_item(i), array[i])
+
     def test_distinct_substring_length_and_replicas(self):
         """ Request distinct replicas no and lengths, and how many duplicate substrings match """
         data = [(1, 2, 1), (1, 3, 1), (2, 2, 1)]
@@ -154,7 +160,7 @@ class TestSuffixArray:
         suffix_array = ['12strin34strin56', '2strin34strin56', '34strin56', '4strin56', '56',
                         '6', 'in34strin56', 'in56', 'n34strin56', 'n56', 'rin34strin56', 'rin56',
                         'strin34strin56', 'strin56', 'trin34strin56', 'trin56']
-        assert_equal(sarray.suffix_array, suffix_array)
+        assert_equal(sarray.get_suffix_array(), suffix_array)
         duplicates = [('i', 5), ('i', 12), (u'in', 5), ('in', 12), ('n', 6), ('n', 13), ('r', 4),
                       ('r', 11), ('ri', 4), ('ri', 11), ('rin', 4), ('rin', 11), ('s', 2),
                       ('s', 9), ('st', 2), ('st', 9), ('str', 2), ('str', 9), ('stri', 2),
@@ -172,5 +178,5 @@ class TestSuffixArray:
         # Check that the duplicated list has not changed
         assert_equal(sarray.get_duplicates(), duplicates)
         # Check that suffix array has not been changed
-        assert_equal(sarray.suffix_array, suffix_array)
+        assert_equal(sarray.get_suffix_array(), suffix_array)
         remove(self.temporary_file)  # Delete file if it is already there
