@@ -10,3 +10,4 @@ local/
 include/
 bin/
 tmp/
+dist/

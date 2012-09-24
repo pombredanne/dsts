@@ -24,7 +24,7 @@ pip install -r ${root_dir}/etc/requirements.txt # Install dev requirements
 
 # Stage the code
 cd $root_dir
-python setup.py install
+python setup.py develop
 
 # Create tmp directory used for testing if it does not exist
 tmp_dir="${root_dir}/tmp"
@@ -36,6 +36,11 @@ fi
 symlink_target=${root_dir}/.git/hooks/pre-commit
 if ! [ -L ${symlink_target} ]; then
 	ln -s ${root_dir}/scripts/pre-commit ${symlink_target}
+fi
+
+# Clean egg-info directory created by distribute
+if [ -d ${root_dir}/dsts.egg-info ]; then
+	rm -rf ${root_dir}/dsts.egg-info
 fi
 
 # Deactivate virtual environment

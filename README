@@ -6,7 +6,7 @@ Installing the package
 
 To install the library on the system, run:
 
-python setup.py install
+sudo python setup.py install
 
 Installing the development environment
 --------------------------------------
