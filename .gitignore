@@ -2,7 +2,7 @@
 *.pyc
 *.py~
 
-# Created by distutils
+# Created by distutils or venv
 build/
 man/
 lib/
@@ -11,3 +11,4 @@ include/
 bin/
 tmp/
 dist/
+dsts.egg-info/

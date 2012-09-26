@@ -28,7 +28,7 @@ class datastore:
     def store_duplicate_substring(self, string, pos):
         """ Stores substring and corresponding position in the database """
         try:
-            self.cursor.execute('INSERT INTO substrings VALUES (?,?)', (string, pos))
+            self.cursor.execute('INSERT INTO substrings VALUES (?,?)', (unicode(string, errors='ignore'), pos))
             self.conn.commit()
         except IntegrityError:
             pass
@@ -37,7 +37,7 @@ class datastore:
         """ Save suffix array into the database """
         for line in suffix_array:
             self.cursor.execute('INSERT INTO suffix_array VALUES (?)', (line,))
-        self.cursor.execute("INSERT INTO data VALUES ('document', ?)", (doc,))
+        self.cursor.execute("INSERT INTO data VALUES ('document', ?)", (unicode(doc, errors='ignore'),))
         self.conn.commit()
 
     def load_suffix_array(self):

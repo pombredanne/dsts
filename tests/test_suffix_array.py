@@ -5,7 +5,7 @@
 from dsts.suffix_array import SuffixArray
 from nose.tools import assert_equal, raises
 from os import remove
-from os.path import exists
+from os.path import exists, dirname, realpath
 from sets import Set
 
 
@@ -38,6 +38,23 @@ class TestSuffixArray:
         for i in self.sa_range:
             test_array.append(self.test_str[0][i:])
         assert_equal(self.sarray1.get_suffix_array(), sorted(test_array))
+
+    def test_init_unicode(self):
+        """ Test initialisation of the Suffix Array using unicode string """
+        test_str = unicode('abcdef') + unichr(200)
+        sarray = SuffixArray('memory', string=test_str)
+        test_array = []
+        for i in range(len(test_str)):
+            test_array.append(test_str[i:])
+        assert_equal(sarray.get_suffix_array(), sorted(test_array))
+
+    def test_init_greek(self):
+        """ Test loading file with non standard ascii characters """
+        loc = dirname(realpath(__file__))
+        f = open('%s/samples/Greek-Lipsum.txt' % loc, 'r')
+        tmp_str = f.read()
+        sarray = SuffixArray('memory', string=tmp_str)
+        sarray.close()
 
     @raises(ValueError)
     def test_validation_memory_and_filename(self):

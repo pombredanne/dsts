@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-# Suffix Array class: Provides functionality for building suffix array from a text string, sorting it,
-# 		      searching it and finding all substring duplicates in the provided string
+# Suffix Array: Suffix array that is assembled from a text string. Provides functionality to
+# 		search it and find all substring duplicates in the provided string
 
 from pprint import pprint
 from datastore import datastore
