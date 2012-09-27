@@ -7,6 +7,7 @@ from nose.tools import assert_equal, raises
 from os import remove
 from os.path import exists, dirname, realpath
 from sets import Set
+from pprint import pprint
 
 
 class TestSuffixArray:
@@ -17,9 +18,9 @@ class TestSuffixArray:
         self.sarray1 = SuffixArray('memory', string=self.test_str[0])
         self.sarray2 = SuffixArray('memory', string=self.test_str[1])
         self.sarray3 = SuffixArray('memory', string=self.test_str[2])
-        self.sarray1.find_all_duplicates()
-        self.sarray2.find_all_duplicates()
-        self.sarray3.find_all_duplicates()
+        self.sarray1.find_all_duplicates(min_length=1)
+        self.sarray2.find_all_duplicates(min_length=1)
+        self.sarray3.find_all_duplicates(min_length=1)
         self.sa_range = range(len(self.sarray1.suffix_array))
         self.temporary_file = 'tmp/sample_test.db'
 
@@ -124,6 +125,16 @@ class TestSuffixArray:
         repeated_substrings = [('ab', 0), ('a', 0), ('b', 1), ('a', 3), ('ab', 5), ('a', 5), ('b', 6)]
         assert_equal(Set(self.sarray2.get_duplicates()), Set(repeated_substrings))
 
+    def test_find_all_duplicates_default_substring_length_limit(self):
+        """ Find all positions with duplicate substrings, default substring length limit """
+        sarray = SuffixArray('memory', string=self.test_str[2])
+        sarray.find_all_duplicates()  # the default substring length should be 2 since we don't specify
+        sub_str = [('ab', 0), ('ab', 6), ('ab', 11), ('abc', 0), ('abc', 6), ('abc', 11),
+                   ('bc', 1), ('bc', 7), ('bc', 12), ('12', 3), ('12', 9), ('bc12', 1), ('bc12', 7),
+                   ('abc12', 0), ('abc12', 6), ('abc1', 0), ('abc1', 6), ('bc1', 1), ('bc1', 7),
+                   ('c1', 2), ('c1', 8), ('c12', 2), ('c12', 8)]
+        assert_equal(Set(sarray.get_duplicates()), Set(sub_str))
+
     def test_find_all_duplicate_positions_as_dict(self):
         """ Find all starting positions for duplicates, along with strings as dict """
         repeated_substrings = {0: ['a', 'ab'], 1: ['b'], 3: ['a'], 5: ['a', 'ab'], 6: ['b']}
@@ -172,7 +183,7 @@ class TestSuffixArray:
         if exists(self.temporary_file):  # Delete tmp file if it has been left from before
             remove(self.temporary_file)  # Delete file if it is already there
         sarray = SuffixArray('save', 'tmp/sample_test.db', '12strin34strin56')
-        sarray.find_all_duplicates()
+        sarray.find_all_duplicates(min_length=1)
         # Check that suffix array has been build properly
         suffix_array = ['12strin34strin56', '2strin34strin56', '34strin56', '4strin56', '56',
                         '6', 'in34strin56', 'in56', 'n34strin56', 'n56', 'rin34strin56', 'rin56',

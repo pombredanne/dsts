@@ -97,14 +97,16 @@ class SuffixArray:
         """ Returns the position of the suffix array element in the original string """
         return len(self.str) - len(self.get_sarray_item(pos))
 
-    def find_all_duplicates(self):
-        """ Searches for all duplicate substrings """
+    def find_all_duplicates(self, min_length=2):
+        """ Searches for all duplicate substrings
+        min_length: The minimum length of substrings to detect, ignore repetitions of smaller substrings
+        """
         if self.str is None and self.suffix_array is not None:
             #  Array was loaded, so we need define the string before we continue
             self.str = self.get_sarray_item(0)
         for i in range(len(self.suffix_array) - 1, 0, -1):  # for each item in suffix array
             for j in range(self.get_sarray_item_len(i), 0, -1):  # for each character in row
-                self.__search_backwards_for_suffix(i, j)
+                self.__search_backwards_for_suffix(i, j, min_length)
 
     def get_sarray_item(self, i):
         """ Returns row from suffix array at position i """
@@ -172,17 +174,18 @@ class SuffixArray:
                 i = i + 1
         return time_series
 
-    def __search_backwards_for_suffix(self, sa_pos, endpoint):
+    def __search_backwards_for_suffix(self, sa_pos, endpoint, min_length):
         """ Searches for prefix backwards from given position
         sa_pos: position in suffix array where prefix string to be searched is located
         endpoint: terminating point for search prefix
         """
         string = self.get_sarray_item(sa_pos)[:endpoint]
         i = sa_pos - 1  # Move pointer to row adjecent to search parameter in suffix array
-        if self.get_sarray_item(i).startswith(string):  # prefix found
-            # Keep track in each position what duplicate duplicated substrings appear
-            self.ds.store_duplicate_substring(string, self.get_pos(i))
-            self.ds.store_duplicate_substring(string, self.get_pos(sa_pos))
+        if len(string) >= min_length:
+            if self.get_sarray_item(i).startswith(string):  # prefix found
+                # Keep track in each position what duplicated substrings appear
+                self.ds.store_duplicate_substring(string, self.get_pos(i))
+                self.ds.store_duplicate_substring(string, self.get_pos(sa_pos))
 
     def close(self):
         """ Closes database connection """
