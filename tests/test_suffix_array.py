@@ -167,6 +167,17 @@ class TestSuffixArray:
         for i in range(len(array)):
             assert_equal(self.sarray2.get_sarray_item(i), array[i])
 
+    def test_lcp_array(self):
+        """ Check validity of LCP array """
+        string = "banana"
+        lcp_array = [-1, 1, 3, 0, 0, 2]
+        sarray = SuffixArray('memory', string=string)
+        assert_equal(lcp_array, sarray.return_lcp_array())
+        string = "abc12abc15"
+        lcp_array = [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        sarray = SuffixArray('memory', string=string)
+        assert_equal(lcp_array, sarray.return_lcp_array())
+
     def test_distinct_substring_length_and_replicas(self):
         """ Request distinct replicas no and lengths, and how many duplicate substrings match """
         data = [(1, 2, 1), (1, 3, 1), (2, 2, 1)]

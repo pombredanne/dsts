@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-# Suffix Array: Suffix array that is assembled from a text string. Provides functionality to
-# 		search it and find all substring duplicates in the provided string
+# Suffix Array: Suffix array that is assembled from a text string. Provides
+#               functionality to search it and find all substring duplicates in
+#               the provided string
 
 from pprint import pprint
 from datastore import datastore
@@ -17,20 +18,21 @@ class SuffixArray:
         string: string to process, use only with memory/save operation
         """
         self.suffix_array = None
+        self.lcp_array = [-1, ]
         # Input validation - filename and string options
         if operation == 'memory':
             if filename:
                 raise ValueError('Memory option is not compatible and filename')
             if not string:
-                raise ValueError('Memory option requires a string to be provided')
+                raise ValueError('Memory option requires the string option')
         elif operation == 'load':
             if not filename:
-                raise ValueError('Load option requires a filename to be specified')
+                raise ValueError('Load option requires the filename option')
             if string:
                 raise ValueError('Load and string options not compatible')
         elif operation == 'save':
             if not filename:
-                raise ValueError('Save option requires a filename to be specified')
+                raise ValueError('Save option requires a filename option')
             if not string:
                 raise ValueError('Save option requires a string to be specified')
         else:
@@ -51,15 +53,28 @@ class SuffixArray:
             self.ds.save_suffix_array(self.suffix_array, self.str)
 
     def generate_suffix_array(self):
-        """ Generates the suffix array """
+        """ Generates the suffix and lcp array """
         if self.str is None:
             raise Exception('Source string not defined')
         else:
             self.suffix_array = range(len(self.str))
             self.suffix_array.sort(self.__sarray_sort)
 
+        # Derive LCP Array
+        for i in range(len(self.suffix_array) - 1):
+            string1 = self.str[self.suffix_array[i]:]
+            string2 = self.str[self.suffix_array[i + 1]:]
+            if string2.startswith(string1):
+                self.lcp_array.append(len(string1))
+            else:
+                self.lcp_array.append(0)
+
+    def return_lcp_array(self):
+        """ Return Long Common Prefix array """
+        return self.lcp_array
+
     def __sarray_sort(self, x, y):
-        """ Allows integers to be sorted by comparing substrings in document string """
+        """ Sort two integers by comparing substrings in document string """
         if self.str[x:] > self.str[y:]:
             return 1
         elif self.str[x:] == self.str[y:]:
