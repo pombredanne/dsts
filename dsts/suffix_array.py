@@ -1,8 +1,11 @@
 #!/usr/bin/env python
 
-# Suffix Array: Suffix array that is assembled from a text string. Provides
-#               functionality to search it and find all substring duplicates in
-#               the provided string
+# --------------------------------------------------------------------------
+# Description: Suffix array implementation. Provides functionality to search
+#              it and find all substring duplicates in the provided string
+# Author: Angelos Molfetas (2012)
+# Licence: BSD Licence, see attached LICENCE file
+# ---------------------------------------------------------------------------
 
 from pprint import pprint
 from datastore import datastore

@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
-# Testing module for SuffixArray class. Uses nosetest.
+# ----------------------------------------------------------------
+# Description: Testing module for SuffixArray class. Uses nosetest
+# Author: Angelos Molfetas (2012)
+# Licence: BSD Licence, see attached LICENCE file
+# ----------------------------------------------------------------
 
 from dsts.suffix_array import SuffixArray
 from nose.tools import assert_equal, raises
