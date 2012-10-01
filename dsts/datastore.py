@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 
-# Defines class necessary for suffix array persistance
+#------------------------------------------------------------------
+# Description: Defines class necessary for suffix array persistance
+# Author: Angelos Molfetas (2012)
+# Copyright: The University of Melbourne, 2012
+# Licence: BSD licence, see attached LICENCE file
+# -----------------------------------------------------------------
 
 from sqlite3 import connect, IntegrityError
 
