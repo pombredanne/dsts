@@ -1,6 +1,7 @@
 .coverage
 *.pyc
 *.py~
+*.md~
 
 # Created by distutils or venv
 build/

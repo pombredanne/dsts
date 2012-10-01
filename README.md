@@ -73,7 +73,7 @@ $scripts/check.sh
 In addition the installation script also installed the pylint package, which also can be used to improve the code.
 
 More information can be found regarding the packages can be found here:
-pep8 - http://www.python.org/dev/peps/pep-0008/
-flake8 - https://bitbucket.org/tarek/flake8
-pyflakes - https://launchpad.net/pyflakes
-pylint - http://www.logilab.org/857
+  * pep8 - http://www.python.org/dev/peps/pep-0008/
+  * flake8 - https://bitbucket.org/tarek/flake8
+  * pyflakes - https://launchpad.net/pyflakes
+  * pylint - http://www.logilab.org/857
