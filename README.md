@@ -13,7 +13,7 @@ Using the package
 
 The following example illustrates to instantiate a suffix array from supplied string and store it in a string:
 
-    -> from dsts.suffix_array import SuffixArray
+    >>> from dsts.suffix_array import SuffixArray
     -> sarray = SuffixArray('memory', string='abcd5abc15abc')
     -> print sarray.return_array_as_string()  # Print sorted array
     0 15abc
@@ -38,6 +38,7 @@ The suffix array can be searched as follows:
     -> print sarray.search('abc15')  # Return position of 'abc15' substring
 
 Examples illustrating how to identify repeating strings:
+
     -> sarray.get_duplicates()
     []
     -> sarray.find_all_duplicates()
