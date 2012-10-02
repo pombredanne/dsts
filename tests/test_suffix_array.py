@@ -139,6 +139,25 @@ class TestSuffixArray:
                    ('c1', 2), ('c1', 8), ('c12', 2), ('c12', 8)]
         assert_equal(Set(sarray.get_duplicates()), Set(sub_str))
 
+    def test_find_all_duplicates_then_wipe(self):
+        """ Find all repeating strings, wipe, then again """
+        sarray = SuffixArray('memory', string='abcd5abc15abc')
+        sarray.find_all_duplicates()  # Find all repeating strings of length > 2
+        repeated_strings = [('5a', 4), ('5a', 9), ('5ab', 4), ('5ab', 9), ('5abc', 4), ('5abc', 9),
+                            ('ab', 0), ('ab', 5), ('ab', 10), ('abc', 0), ('abc', 5), ('abc', 10),
+                            ('bc', 1), ('bc', 6), ('bc', 11)]
+        assert_equal(sarray.get_duplicates(), repeated_strings)
+        sarray.wipe_duplicates()
+        sarray.find_all_duplicates(min_length=3)
+        repeated_strings = [('5ab', 4), ('5ab', 9), ('5abc', 4), ('5abc', 9), ('abc', 0), ('abc', 5),
+                            ('abc', 10)]
+        assert_equal(Set(sarray.get_duplicates()), Set(repeated_strings))
+
+    def test_get_empty_duplicates(self):
+        """ Get duplicate substings without running find command """
+        sarray = SuffixArray('memory', string='abcd5abc15abc')
+        assert_equal(sarray.get_duplicates(), [])
+
     def test_find_all_duplicate_positions_as_dict(self):
         """ Find all starting positions for duplicates, along with strings as dict """
         repeated_substrings = {0: ['a', 'ab'], 1: ['b'], 3: ['a'], 5: ['a', 'ab'], 6: ['b']}
@@ -155,7 +174,7 @@ class TestSuffixArray:
         assert_equal(self.sarray2.get_duplicate_substrings_and_count(), repeated_substrings)
 
     def test_get_duplicate_positions_and_largest_string_size(self):
-        """ Return positions for duplicate substrings along with size of largest substring """
+        """ Return positions for repeating substrings along with size of largest substring """
         repeated_positions = [(0, 2), (1, 1), (3, 1), (5, 2), (6, 1)]
         assert_equal(self.sarray2.get_duplicate_positions_and_largest_size(), repeated_positions)
 
@@ -183,7 +202,7 @@ class TestSuffixArray:
         assert_equal(lcp_array, sarray.return_lcp_array())
 
     def test_distinct_substring_length_and_replicas(self):
-        """ Request distinct replicas no and lengths, and how many duplicate substrings match """
+        """ Request distinct replicas no and lengths, and no of repeating substrings """
         data = [(1, 2, 1), (1, 3, 1), (2, 2, 1)]
         assert_equal(self.sarray2.get_distinct_substring_length_and_replicas(), data)
 

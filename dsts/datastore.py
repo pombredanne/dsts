@@ -88,6 +88,11 @@ class datastore:
         self.cursor.execute('SELECT pos, max(length(string)) FROM substrings group by pos')
         return self.cursor.fetchall()
 
+    def wipe_duplicates(self):
+        """ Remove all found repeated substrings """
+        self.cursor.execute('DELETE FROM substrings')
+        return self.conn.commit()
+
     def get_duplicates(self):
         """ Return repeating substrings along with where duplicate strings start """
         self.cursor.execute('SELECT string, pos FROM substrings order by string, pos')
