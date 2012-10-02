@@ -8,8 +8,8 @@
 
 from dsts.suffix_array import SuffixArray
 from nose.tools import assert_equal, raises
-from os import remove
-from os.path import exists, dirname, realpath
+from os import remove, makedirs
+from os.path import exists, dirname, realpath, exists
 from sets import Set
 from pprint import pprint
 
@@ -26,6 +26,8 @@ class TestSuffixArray:
         self.sarray2.find_all_duplicates(min_length=1)
         self.sarray3.find_all_duplicates(min_length=1)
         self.sa_range = range(len(self.sarray1.suffix_array))
+        if not exists('tmp/'):
+            makedirs('tmp/')
         self.temporary_file = 'tmp/sample_test.db'
 
     @classmethod
