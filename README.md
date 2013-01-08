@@ -60,7 +60,7 @@ After cloning the repository the development environment can be installed byrunn
 
 The installation script requires virtualenv to be installed. 
 
-This will create a symbolic link between in the lib directory pointing to the src directory. This allows one to import the data structures from a python intrepretter running in an activated virtual environment, e.g:
+This will create a symbolic link between in the lib directory pointing to the src directory. This allows one to import the data structures from a python intrepretter running in an activated virtual environment (see next session), e.g:
 
     >>> from dsts.suffix_array import SuffixArray
 
@@ -76,6 +76,25 @@ And to deactivate it:
     $ deactivate
 
 Note, if you want to install the library outside the virtual environment using "python setup.py install" make sure to first deactivate the virtual environment, or run the installation command in a seperate shell.
+
+Package management
+------------------
+
+The installation script installs the 'yolk' utility that can be used to query packages. If used in an activated development environment, yolk can be used to show all the packages that were installed to the environemnt by the installation script, as well as any added packages added manually by the user:
+
+    $ yolk -l
+
+It can also check if there are any packages that need to be upgraded as follows:
+
+    $ yolk -U
+
+For more instructions please check yolk's online documentation or refer to yolk's command documentationg:
+
+    $ yolk --help
+
+To upgrade all packages required by this package, run pip as folows:
+
+    $ pip install --upgrade -r etc/requirements.txt
 
 Running the test suit
 ---------------------

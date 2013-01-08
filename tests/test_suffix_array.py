@@ -65,43 +65,43 @@ class TestSuffixArray:
 
     @raises(ValueError)
     def test_validation_memory_and_filename(self):
-        """ Test constructor validation, 'memory' + filename """
+        """ Test Suffix Array constructor validation, 'memory' + filename """
         sarray = SuffixArray('memory', 'sample_filename')  # filename should'nt be specified
         sarray.close()
 
     @raises(ValueError)
     def test_validation_memory_no_string(self):
-        """ Test constructor validation, 'memory' + no string """
+        """ Test Suffix Array constructor validation, 'memory' + no string """
         sarray = SuffixArray('memory')  # string should be specified
         sarray.close()
 
     @raises(ValueError)
     def test_validation_load_no_filename(self):
-        """ Test constructor validation, 'load' and no filename """
+        """ Test Suffix Array constructor validation, 'load' and no filename """
         sarray = SuffixArray('load')  # filename should be specified
         sarray.close()
 
     @raises(ValueError)
     def test_validation_load_and_string(self):
-        """ Test constructor validation, 'load' and string """
+        """ Test Suffix Array constructor validation, 'load' and string """
         sarray = SuffixArray('load', 'sample file', 'test str')  # string should not be specified
         sarray.close()
 
     @raises(ValueError)
     def test_validation_save_no_filename(self):
-        """ Test constructor validation 'save' and no filename """
+        """ Test Suffix Array constructor validation 'save' and no filename """
         sarray = SuffixArray('save')  # filename should be specified
         sarray.close()
 
     @raises(ValueError)
     def test_validation_save_no_string(self):
-        """ Test constructor validation 'save' and no string """
+        """ Test Suffix Array constructor validation 'save' and no string """
         sarray = SuffixArray('save', 'sample_file')  # string should be specified
         sarray.close()
 
     @raises(ValueError)
     def test_validation_invalid_operation(self):
-        """ Test constructor with invalid operation type """
+        """ Test Suffix Array constructor with invalid operation type """
         sarray = SuffixArray('something')  # 'memory', 'load', or 'save' should be specified
         sarray.close()
 
