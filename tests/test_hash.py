@@ -100,6 +100,9 @@ class TestKRFingerprinting:
         self.hgen.hash_block_with_history('1234567890123456')
         hash2 = self.hgen.incremental('7')
         assert_equal(hash1, hash2)
+        hash1 = gen.hash_block('3456789012345678')
+        hash2 = self.hgen.incremental('8')
+        assert_equal(hash1, hash2)
 
     @raises(TypeError)
     def test_increment_using_large_buffer(self):

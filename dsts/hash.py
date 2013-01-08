@@ -7,7 +7,8 @@
 # Licence: BSD licence, see attached LICENCE file
 # -----------------------------------------------------------------
 
-from Queue import Queue
+#from Queue import Queue
+from collections import deque as Queue
 
 
 class RK_hash_generator:
@@ -24,14 +25,14 @@ class RK_hash_generator:
         """ Calculates hash of byte sequence and stores it in the hash table. Use 'hash_block_with_history' method first to
         instantiate generator history before using this method. """
         try:
-            previous_char = self.chars.get()
+            previous_char = self.chars.popleft()
         except AttributeError:  # Self.chars not defined, no history defined
             raise RuntimeWarning('No history defined, hash_block_with_history should be called first')
         try:
             self.prev_hash = ((self.prev_hash - ord(previous_char) * pow(self.base, self.block_size - 1)) * self.base + ord(next_char))
         except TypeError:
             raise TypeError('Incremental buffer should be of size one')
-        self.chars.put(next_char)
+        self.chars.append(next_char)
         return self.prev_hash % self.hash_range
 
 #    def ind_hash(self, byte_sequence):
@@ -57,7 +58,7 @@ class RK_hash_generator:
         self.prev_hash = self._hash_block_unconstrained(byte_sequence)
         self.chars = Queue()  # Queue is used to store history
         for char in byte_sequence:
-            self.chars.put(char)
+            self.chars.append(char)
         return self.prev_hash % self.hash_range
 
     def _hash_block_unconstrained(self, byte_sequence):
