@@ -15,11 +15,17 @@ class RK_hash_generator:
     """ Rabin & Karp fingerprint generator """
     def __init__(self, blockSize, hashRange):
         """ Initialise Rolling hash """
-        self.block_size = blockSize
+        if type(blockSize) is int:
+            self.block_size = blockSize
+        else:
+            raise TypeError('Block Size should be an integer value')
         self.prev_hash = 0  # Previous used hash
         self.base = 10
         self.chars = None
-        self.hash_range = hashRange
+        if type(hashRange) is int:
+            self.hash_range = hashRange
+        else:
+            raise TypeError('Hash Range should be an integer value')
 
     def incremental(self, next_char):
         """ Calculates hash of byte sequence and stores it in the hash table. Use 'hash_block_with_history' method first to

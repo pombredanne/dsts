@@ -41,6 +41,16 @@ class TestKRFingerprinting:
         """ Test invalid Rabin & Karp generator class instantiation with no hash range specified """
         test_gen = RK_hash_generator(BUFFERSIZE)
 
+    @raises(TypeError)
+    def test_invalid_init_blocksize_string(self):
+        """ Instatiating RK hash generator with invalid blocksize, string instead of integer """
+        test_gen = RK_hash_generator('bytearray', HASHRANGE)
+
+    @raises(TypeError)
+    def test_invalid_init_hashrange_string(self):
+        """ Instatiating RK hash generator with invalid hash range, string instead of integer """
+        test_gen = RK_hash_generator(BUFFERSIZE, 'bytearray')
+
     @raises(BufferError)
     def test_invalid_buffer_size_hash_block(self):
         """ Raise exception when buffer supplied to hash_block is of incorrect size """
