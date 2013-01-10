@@ -119,3 +119,14 @@ class TestKRFingerprinting:
         """ Incorrectly use a large buffer with increment method """
         self.hgen.hash_block_with_history('1234567890123456')
         self.hgen.incremental('12')
+
+    def test_change_history(self):
+        """ Test validity of increment method when changing history """
+        hash1 = self.hgen.hash_block_with_history('1234567890123456')
+        hash2 = self.hgen.incremental('a')
+        self.hgen.hash_block_with_history('abcdefghijklmnop')
+        self.hgen.incremental('b')
+        hash1 = self.hgen.hash_block_with_history('1234567890123456')
+        hash2 = self.hgen.incremental('a')
+        assert_equal(hash1, hash1)
+        assert_equal(hash2, hash2)
