@@ -67,10 +67,13 @@ class SuffixArray:
         for i in range(len(self.suffix_array) - 1):
             string1 = self.str[self.suffix_array[i]:]
             string2 = self.str[self.suffix_array[i + 1]:]
-            if string2.startswith(string1):
-                self.lcp_array.append(len(string1))
-            else:
-                self.lcp_array.append(0)
+            count = 0
+            for i in range(len(string1)):
+                if string1[i] == string2[i]:
+                    count += 1
+                else:
+                    break
+            self.lcp_array.append(count)
 
     def return_lcp_array(self):
         """ Return Long Common Prefix array """
@@ -165,6 +168,29 @@ class SuffixArray:
         for i in range(len(self.suffix_array) - 1, 0, -1):  # for each item in suffix array
             for j in range(self.get_sarray_item_len(i), 0, -1):  # for each character in row
                 self.__search_backwards_for_suffix(i, j, min_length)
+
+    def find_all_longest_duplicates(self):
+        """ Finds all the longest common substrings in the string using the LCP array """
+        strings_found = []
+        tmp_str = None
+        tmp_len = 0
+        tmp_pos = []
+
+        duplicates = {}
+        for i in range(1, len(self.str)):
+            if self.lcp_array[i] != 0:
+                duplicate_string = self.get_sarray_item(i)[:self.lcp_array[i]]
+                if i not in duplicates:
+                    duplicates[i] = duplicate_string
+                elif len(duplicates[i]) < len(duplicate_string): 
+                    duplicates[i] = duplicate_string
+                if i - 1 not in duplicates:
+                    duplicates[i-1] = duplicate_string
+                elif len(duplicates[i]) < len(duplicate_string):
+                    duplicates[i-1] = duplicate_string
+        for i in duplicates:
+            strings_found.append((self.get_pos(i), duplicates[i]))
+        return strings_found
 
     def get_sarray_item(self, i):
         """ Returns row from suffix array at position i """
