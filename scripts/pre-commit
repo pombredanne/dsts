@@ -1,9 +1,12 @@
 #!/bin/sh
 
 FILES=$(git diff --cached --name-status | grep -v ^D | awk '$1 $2 {print $2}' | grep -e .py$)
+return_value=0
 if [ -n "$FILES" ]; then
 	pep8 -r --ignore=E501 $FILES
 	return_value=$?
+fi
+if  [ $return_value -ne 0 ]; then
 	echo Commit cancelled
 	exit $return_value
 fi

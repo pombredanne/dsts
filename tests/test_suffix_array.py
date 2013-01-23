@@ -126,6 +126,14 @@ class TestSuffixArray:
         assert_equal(self.sarray1.search('123'), 12)  # Search for many characters in the end
         assert_equal(self.sarray1.search('y'), -1)    # Search for non existant character
 
+    def test_multiple_search(self):
+        """ Search for all instances of a substring """
+        sa = SuffixArray('memory', string='z123ABC123CBA256123')
+        assert_equal(sa.search_all('ABC'), [4])
+        assert_equal(sa.search_all('123'), [7, 1, 16])
+        assert_equal(sa.search_all('z'), [0])
+        assert_equal(sa.search_all('x'), [])
+
     def test_find_all_duplicates(self):
         """ Find all positions with duplicate substrings, return tuples (pos,string) """
         repeated_substrings = [('ab', 0), ('a', 0), ('b', 1), ('a', 3), ('ab', 5), ('a', 5), ('b', 6)]

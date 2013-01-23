@@ -97,18 +97,55 @@ class SuffixArray:
         return self.str
 
     def search(self, target):
-        """ Searches the suffix array for substring using binary search on prefixes, returns first instance """
+        """ Searches for a substring in string using SA and binary search on prefixes, returns first instance """
+        SA_pos = self.search_SA(target)
+
+        if SA_pos == -1:
+            return -1  # not found
+        else:
+            return self.get_pos(SA_pos)
+
+    def search_SA(self, target):
+        """ Searches the suffix array for a substring using binary search on prefixes, returns first instance """
         lo = 0
         hi = len(self.str)
         while hi > lo:
             middle = (lo + hi) / 2
             if target == self.get_sarray_item(middle)[0:len(target)]:
-                return self.get_pos(middle)
+                return middle
             elif target > self.get_sarray_item(middle)[0:len(target)]:
                 lo = middle + 1
             else:
                 hi = middle
         return -1  # not found
+
+    def search_all(self, target):
+        """ Searches the suffix array for substring using binary search on prefixes, returns all instances """
+        positions = []  # store all matches here
+        found = None    # store first instance found
+
+        # Find first instance
+
+        middle = self.search_SA(target)
+
+        if middle == -1:  # nothing found
+            return []
+        else:
+            pos = self.get_pos(middle)
+            positions.append(pos)
+        if middle != len(self.str):  # not at the end of the SA
+            for i in range(middle + 1, len(self.str)):
+                if target == self.get_sarray_item(i)[0:len(target)]:
+                    positions.append(self.get_pos(i))
+                else:
+                    break
+        if middle != 0:  # not at the beginning of the SA
+            for i in range(middle - 1, -1, -1):
+                if target == self.get_sarray_item(i)[0:len(target)]:
+                    positions.append(self.get_pos(i))
+                else:
+                    break
+        return positions
 
     def get_pos(self, pos):
         """ Returns the position of the suffix array element in the original string """
@@ -119,7 +156,7 @@ class SuffixArray:
         self.ds.wipe_duplicates()
 
     def find_all_duplicates(self, min_length=2):
-        """ Searches for all duplicate substrings
+        """ Searchges for all duplicate substrings
         min_length: The minimum length of substrings to detect, ignore repetitions of smaller substrings
         """
         if self.str is None and self.suffix_array is not None:
