@@ -37,6 +37,11 @@ The suffix array can be searched as follows:
     >>> print sarray.search('abcd5')  # Return position of 'abcd5' substring
     >>> print sarray.search('abc15')  # Return position of 'abc15' substring
 
+This returns the first instance found. All instances of the substring in the string can be found as follows:
+    
+    >>> print sarray.search_all('abc')  # Return all positions of 'abc'
+    [10, 5, 0]
+
 Examples illustrating how to identify repeating strings:
 
     >>> sarray.get_duplicates()
