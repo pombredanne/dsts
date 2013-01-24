@@ -182,12 +182,12 @@ class SuffixArray:
                 duplicate_string = self.get_sarray_item(i)[:self.lcp_array[i]]
                 if i not in duplicates:
                     duplicates[i] = duplicate_string
-                elif len(duplicates[i]) < len(duplicate_string): 
+                elif len(duplicates[i]) < len(duplicate_string):
                     duplicates[i] = duplicate_string
                 if i - 1 not in duplicates:
-                    duplicates[i-1] = duplicate_string
+                    duplicates[i - 1] = duplicate_string
                 elif len(duplicates[i]) < len(duplicate_string):
-                    duplicates[i-1] = duplicate_string
+                    duplicates[i - 1] = duplicate_string
         for i in duplicates:
             strings_found.append((self.get_pos(i), duplicates[i]))
         return strings_found

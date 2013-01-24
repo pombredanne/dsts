@@ -207,7 +207,7 @@ class TestSuffixArray:
         sarray = SuffixArray('memory', string=string)
         assert_equal(lcp_array, sarray.return_lcp_array())
         string = "abc12abc15"
-        lcp_array = [-1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        lcp_array = [-1, 1, 0, 0, 0, 4, 0, 3, 0, 2]
         sarray = SuffixArray('memory', string=string)
         assert_equal(lcp_array, sarray.return_lcp_array())
 
