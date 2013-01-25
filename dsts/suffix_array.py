@@ -8,60 +8,21 @@
 # ---------------------------------------------------------------------------
 
 from pprint import pprint
-from datastore import datastore
 
 
 class SuffixArray:
-    def __init__(self, operation, filename=None, string=None):
+    def __init__(self, string):
         """ Constructor, builds and sorts the array
-        operation: 'memory', generate suffix array and store in memory
-                   'load', load suffix array from <filename>
-                   'save'. save suffix array to <filename>
-        filename: name of file, use only with load/save operation
         string: string to process, use only with memory/save operation
         """
-        self.suffix_array = None
         self.lcp_array = [-1, ]
-        # Input validation - filename and string options
-        if operation == 'memory':
-            if filename:
-                raise ValueError('Memory option is not compatible and filename')
-            if not string:
-                raise ValueError('Memory option requires the string option')
-        elif operation == 'load':
-            if not filename:
-                raise ValueError('Load option requires the filename option')
-            if string:
-                raise ValueError('Load and string options not compatible')
-        elif operation == 'save':
-            if not filename:
-                raise ValueError('Save option requires a filename option')
-            if not string:
-                raise ValueError('Save option requires a string to be specified')
-        else:
-            raise ValueError("Provide valid operation: 'memory', 'load', or 'save'")
-
         self.str = string
-        if self.str:
-            self.generate_suffix_array()
-
-        if operation == 'memory':
-            self.ds = datastore()
-        elif operation == 'load':
-            self.ds = datastore('load', filename=filename)
-            self.suffix_array = self.ds.load_suffix_array()
-            self.str = self.ds.load_document()
-        elif operation == 'save':
-            self.ds = datastore('save', filename=filename)
-            self.ds.save_suffix_array(self.suffix_array, self.str)
+        self.generate_suffix_array()
 
     def generate_suffix_array(self):
         """ Generates the suffix and lcp array """
-        if self.str is None:
-            raise Exception('Source string not defined')
-        else:
-            self.suffix_array = range(len(self.str))
-            self.suffix_array.sort(self.__sarray_sort)
+        self.suffix_array = range(len(self.str))
+        self.suffix_array.sort(self.__sarray_sort)
 
         # Derive LCP Array
         for i in range(len(self.suffix_array) - 1):
@@ -154,44 +115,6 @@ class SuffixArray:
         """ Returns the position of the suffix array element in the original string """
         return len(self.str) - len(self.get_sarray_item(pos))
 
-    def wipe_duplicates(self):
-        """ Remove all duplicate substrings """
-        self.ds.wipe_duplicates()
-
-    def find_all_duplicates(self, min_length=2):
-        """ Searchges for all duplicate substrings
-        min_length: The minimum length of substrings to detect, ignore repetitions of smaller substrings
-        """
-        if self.str is None and self.suffix_array is not None:
-            #  Array was loaded, so we need define the string before we continue
-            self.str = self.get_sarray_item(0)
-        for i in range(len(self.suffix_array) - 1, 0, -1):  # for each item in suffix array
-            for j in range(self.get_sarray_item_len(i), 0, -1):  # for each character in row
-                self.__search_backwards_for_suffix(i, j, min_length)
-
-    def find_all_longest_duplicates(self):
-        """ Finds all the longest common substrings in the string using the LCP array """
-        strings_found = []
-        tmp_str = None
-        tmp_len = 0
-        tmp_pos = []
-
-        duplicates = {}
-        for i in range(1, len(self.str)):
-            if self.lcp_array[i] != 0:
-                duplicate_string = self.get_sarray_item(i)[:self.lcp_array[i]]
-                if i not in duplicates:
-                    duplicates[i] = duplicate_string
-                elif len(duplicates[i]) < len(duplicate_string):
-                    duplicates[i] = duplicate_string
-                if i - 1 not in duplicates:
-                    duplicates[i - 1] = duplicate_string
-                elif len(duplicates[i]) < len(duplicate_string):
-                    duplicates[i - 1] = duplicate_string
-        for i in duplicates:
-            strings_found.append((self.get_pos(i), duplicates[i]))
-        return strings_found
-
     def get_sarray_item(self, i):
         """ Returns row from suffix array at position i """
         return self.str[self.suffix_array[i]:]
@@ -206,71 +129,3 @@ class SuffixArray:
         for i in self.suffix_array:
             tmp_array.append(self.str[i:])
         return tmp_array
-
-    def get_duplicates(self):
-        """ Returns substrings that appear more than once along their positions """
-        return self.ds.get_duplicates()
-
-    def get_duplicate_positions_as_dict(self):
-        """ Returns positions where duplicate substrings start, along with strings as a dictionary """
-        return self.ds.get_duplicate_positions_as_dict()
-
-    def get_duplicate_substrings_as_dict(self):
-        """ Returns substrings that appear more than once long their positions as a dictionary """
-        return self.ds.get_duplicate_substrings_as_dict()
-
-    def get_duplicate_substrings_and_count(self):
-        """ Return repeating substrings, along with the number of occurances """
-        return self.ds.get_duplicate_substrings_and_count()
-
-    def get_duplicate_positions_and_largest_size(self):
-        """ Returns positions where duplicate strings start, along with size of largest string
-        returns: List of tuples. e.g. [(pos1, length1), (pos2, length2), etc)
-        """
-        return self.ds.get_duplicate_positions_and_largest_string_size()
-
-    def get_distinct_substring_length_and_replicas(self):
-        """ Returns distinct (lengths, replicas, occurances) for duplicate strings.
-        :returns: list of (lengths, replicas, occurances) tuples. E.g., (2, 4, 3) means they are
-                  three strings which have length of two and appear on four seperate occasions.
-        """
-        return self.ds.get_distinct_substring_length_and_replicas()
-
-    def get_substring_length_and_replicas(self):
-        """ Returns (lengths, replicas) for duplicate strings.
-        :returns: list of (lengths, replicas)
-        """
-        return self.ds.get_substring_length_and_replicas()
-
-    def get_max_substring_size_timeseries(self):
-        """ Returns a timeseries with the largest sizes of substrings at each point of the string
-        returns: Vector of n integers, where n is the size of the original string.
-                 Empty parts of the string with no duplicate strings are padded with "0".
-        """
-        i = 0
-        time_series = []
-        for pos, length in self.ds.get_duplicate_positions_and_largest_string_size():
-            while i <= pos:
-                if i == pos:
-                    time_series.append(length)
-                else:
-                    time_series.append(0)
-                i = i + 1
-        return time_series
-
-    def __search_backwards_for_suffix(self, sa_pos, endpoint, min_length):
-        """ Searches for prefix backwards from given position
-        sa_pos: position in suffix array where prefix string to be searched is located
-        endpoint: terminating point for search prefix
-        """
-        string = self.get_sarray_item(sa_pos)[:endpoint]
-        i = sa_pos - 1  # Move pointer to row adjecent to search parameter in suffix array
-        if len(string) >= min_length:
-            if self.get_sarray_item(i).startswith(string):  # prefix found
-                # Keep track in each position what duplicated substrings appear
-                self.ds.store_duplicate_substring(string, self.get_pos(i))
-                self.ds.store_duplicate_substring(string, self.get_pos(sa_pos))
-
-    def close(self):
-        """ Closes database connection """
-        self.ds.close()
