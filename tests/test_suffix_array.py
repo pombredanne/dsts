@@ -94,8 +94,17 @@ class TestSuffixArray:
         string = "banana"
         lcp_array = [-1, 1, 3, 0, 0, 2]
         sarray = SuffixArray(string=string)
-        assert_equal(lcp_array, sarray.return_lcp_array())
+        assert_equal(lcp_array, sarray.get_lcp_array())
         string = "abc12abc15"
         lcp_array = [-1, 1, 0, 0, 0, 4, 0, 3, 0, 2]
         sarray = SuffixArray(string=string)
-        assert_equal(lcp_array, sarray.return_lcp_array())
+        assert_equal(lcp_array, sarray.get_lcp_array())
+
+    def test_adding_to_suffix_array(self):
+        """ Checks addings a substring to the suffix array """
+        x = SuffixArray("ABCAB")
+        x.add_to_suffix_array('Z')
+        SA = ['ABCABZ', 'ABZ', 'BCABZ', 'BZ', 'CABZ', 'Z']
+        assert_equal(SA, x.get_suffix_array())
+        LCP = [-1, 2, 0, 1, 0, 0]
+        assert_equal(LCP, x.get_lcp_array())

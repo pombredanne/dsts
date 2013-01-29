@@ -15,16 +15,22 @@ class SuffixArray:
         """ Constructor, builds and sorts the array
         string: string to process, use only with memory/save operation
         """
-        self.lcp_array = [-1, ]
         self.str = string
         self.generate_suffix_array()
+
+    def __str__(self):
+        """ Printing this object returns the suffix array """
+        return str(self.get_suffix_array())
 
     def generate_suffix_array(self):
         """ Generates the suffix and lcp array """
         self.suffix_array = range(len(self.str))
         self.suffix_array.sort(self.__sarray_sort)
+        self.derive_lcp_array()
 
-        # Derive LCP Array
+    def derive_lcp_array(self):
+        """ Derive lcp array """
+        self.lcp_array = [-1, ]
         for i in range(len(self.suffix_array) - 1):
             string1 = self.str[self.suffix_array[i]:]
             string2 = self.str[self.suffix_array[i + 1]:]
@@ -36,7 +42,7 @@ class SuffixArray:
                     break
             self.lcp_array.append(count)
 
-    def return_lcp_array(self):
+    def get_lcp_array(self):
         """ Return Long Common Prefix array """
         return self.lcp_array
 
@@ -129,3 +135,38 @@ class SuffixArray:
         for i in self.suffix_array:
             tmp_array.append(self.str[i:])
         return tmp_array
+
+    def find_SA_pos(self, target):
+        """ Searches for sorted position of target within Suffix Array """
+        lo = 0
+        hi = len(self.suffix_array)
+        middle = (lo + hi) / 2
+        while hi > lo:
+            prev = middle
+            middle = (lo + hi) / 2
+            if target == self.get_sarray_item(middle):
+                return middle
+            elif target > self.get_sarray_item(middle):
+                lo = middle + 1
+            else:
+                print target, self.get_sarray_item(middle)
+                hi = middle
+
+        if target > self.get_sarray_item(middle):
+            return hi
+        else:
+            return lo
+
+    def add_to_suffix_array(self, substr):
+        """ Adds a substring to the suffix array. Requires resorting the
+            suffix array and recaculating the lcp array, which is done in
+            O(n+m), where n is the size of the original string and m is
+            the size of substr.
+        """
+        start_pos = len(self.str)
+        self.str += substr
+        end_pos = len(self.str)
+        for i in range(start_pos, end_pos):
+            self.suffix_array.insert(self.find_SA_pos(self.str[i:]), i)
+        self.suffix_array.sort(self.__sarray_sort)
+        self.derive_lcp_array()
