@@ -39,9 +39,9 @@ class SuffixArray:
             self.lcp_array.append(self.compare_strings(string1, string2))
 
     def compare_strings(self, string1, string2):
-        """ Compares two strings left to right, and returns how characters matched """
+        """ Compares two strings left to right, and returns where characters matched """
         count = 0
-        for i in range(len(string1)):
+        for i in range(min(len(string1), len(string2))):
             if string1[i] == string2[i]:
                 count += 1
             else:
@@ -75,7 +75,10 @@ class SuffixArray:
     def get_pos(self, pos):
         """ Returns the position of the suffix array element in the original string """
         return self.suffix_array[pos]
-        #return len(self.str) - len(self.get_sarray_item(pos))
+
+    def get_pos_reverse(self, pos):
+        """ Returns the position of the suffix array element in the original string in relation to the end of the string """
+        return len(self.str) - len(self.get_sarray_item(pos))
 
     def get_sarray_item(self, i):
         """ Returns row from suffix array at position i """
@@ -109,7 +112,21 @@ class SuffixArray:
     # Search functions
 
     def search(self, target):
-        """ Searches for a substring in string using SA and binary search on prefixes, returns first instance """
+        """ Searches for a substring in string using SA and binary search on prefixes, returns first instance
+            :target: string to search
+        """
+        SA_pos = self.search_SA(target)
+
+        if SA_pos == -1:
+            return -1  # not found
+        else:
+            return self.get_pos(SA_pos)
+
+    def search_reverse(self, target):
+        """ Searches for a substring in string using SA and binary search on prefixes, returns first instance
+            :target: string to search
+            :reverse: return position as an offset in relation to the end of the file
+        """
         SA_pos = self.search_SA(target)
 
         if SA_pos == -1:
@@ -130,31 +147,6 @@ class SuffixArray:
             else:
                 hi = middle
         return -1  # not found
-
-#    def search_forward(self, target, pos):
-#        """ Searches the suffix array for a substring using binary search on prefixes, returns first instance
-#            Similar to search_SA, but it searches forwards from the given position in the original string
-#        """
-#        lo = 0
-#        hi = len(self.str)
-#        while hi > lo:
-#            middle = (lo + hi) / 2
-#            if self.get_pos(middle) <= pos:
-#                if target == self.get_sarray_item(middle+1)[0:len(target)]:
-#                    return self.get_pos(middle+1)
-#                elif target > self.get_sarray_item(middle+1)[0:len(target)]:
-#                    lo = middle + 2
-#                else:
-#                    hi = middle - 1
-#            else:
-#                if target == self.get_sarray_item(middle)[0:len(target)]:
-#                    return self.get_pos(middle)
-#                elif target > self.get_sarray_item(middle)[0:len(target)]:
-#                    lo = middle + 1
-#                else:
-#                    hi = middle
-#
-#        return None  # not found
 
     def search_all(self, target):
         """ Searches the suffix array for substring using binary search on prefixes, returns all instances """
@@ -204,40 +196,6 @@ class SuffixArray:
         else:
             return lo
 
-    #def find_common_substrs(self):
-    #    """ Searches for the common substrings through the original string """
-    #    strings_found = []
-    #    start_substr = 0
-    #    length = 0
-    #    found_pos = None
-    #    i = 0
-    #    search_str = self.str[i]
-    #    while True:
-    #        pos = self.search_forward(search_str, start_substr)
-    #        print search_str, pos
-    #        if pos:  # if extended string found, add one more character
-    #            found_pos = pos  # update last found position
-    #            length += 1      # update length of sub str at last found position
-    #            if i != len(self.str)-1:
-    #                i += 1           # move search pointer forward
-    #                search_str += self.str[i]
-    #            else:
-    #                break  # reached the end
-    #        else:  # search string not found
-    #            if length:  # No match and we reached end of a substring
-    #                strings_found.append((start_substr, found_pos, length))
-    #                length = 0       #  reset length of previously sound sub str
-    #            elif len(search_str) == 1:  # no search string found move to the next character
-    #                if i != len(self.str)-1:
-    #                    i += 1
-    #                else:
-    #                    break  # reached the end
-    #            search_str = self.str[i]  #  moving to next substring, reset search string
-    #            start_substr = i #  moving to next substring, reset exclusion position
-    #            found_pos = None         #  moving to next substring, reset found position
-    #
-    #    return strings_found
-
     def find_longest_common_string_pairs(self):
         """ Searches for the common substrings through the original string """
 
@@ -277,6 +235,10 @@ class ReverseSuffixArray(SuffixArray):
     def get_pos(self, pos):
         """ Returns the position of the suffix array element in the original string """
         return (len(self.str) - 1) - self.suffix_array[pos]
+
+    def get_pos_reverse(self, pos):
+        """ Returns the position of the suffix array element in the original string in relation to the end of the string """
+        return self.get_sarray_item(pos)
 
     def _sarray_sort(self, x, y):
         """ Sort two integers by comparing substrings in document string """

@@ -127,6 +127,31 @@ class TestRevSuffixArray:
         LCP = [-1, 2, 0, 1, 2, 1, 0]
         assert_equal(LCP, x.get_lcp_array())
 
+    def test_adding_to_suffix_array_left(self):
+        """ REV SARRAY: Adding a substring to the left of the suffix array """
+        x = ReverseSuffixArray("ABCAB")
+        x.add_to_suffix_array_left('X')
+        SA = ['AB', 'ABCAB', 'B', 'BCAB', 'CAB', 'XABCAB']
+        LCP = [-1, 2, 0, 1, 0, 0]
+        assert_equal(SA, x.get_suffix_array())
+        assert_equal(LCP, x.get_lcp_array())
+        x.add_to_suffix_array_left('AP')
+        SA = ['AB', 'ABCAB', 'APXABCAB', 'B', 'BCAB', 'CAB', 'PXABCAB', 'XABCAB']
+        LCP = [-1, 2, 1, 0, 1, 0, 0, 0]
+        assert_equal(SA, x.get_suffix_array())
+        assert_equal(LCP, x.get_lcp_array())
+
+    def test_adding_to_suffix_array_left(self):
+        """ REV SARRAY: Adding character by character to the left of the suffix array """
+        string = 'ABCA'
+        x = ReverseSuffixArray('B')
+        for i in range(len(string) - 1, -1, -1):
+            x.add_to_suffix_array_left(string[i])
+        SA = ['AB', 'ABCAB', 'B', 'BCAB', 'CAB']
+        assert_equal(SA, x.get_suffix_array())
+        LCP = [-1, 2, 0, 1, 0]
+        assert_equal(LCP, x.get_lcp_array())
+
 
 class TestSuffixArray:
     """ Testsing module for the Suffix Array """
@@ -239,18 +264,4 @@ class TestSuffixArray:
         SA = ['ABBB', 'ABCABBB', 'B', 'BB', 'BBB', 'BCABBB', 'CABBB']
         assert_equal(SA, x.get_suffix_array())
         LCP = [-1, 2, 0, 1, 2, 1, 0]
-        assert_equal(LCP, x.get_lcp_array())
-
-    def test_adding_to_suffix_array_left(self):
-        """ SARRAY: Adding a substring to the left of the suffix array """
-        x = ReverseSuffixArray("ABCAB")
-        x.add_to_suffix_array_left('X')
-        SA = ['AB', 'ABCAB', 'B', 'BCAB', 'CAB', 'XABCAB']
-        LCP = [-1, 2, 0, 1, 0, 0]
-        assert_equal(SA, x.get_suffix_array())
-        assert_equal(LCP, x.get_lcp_array())
-        x.add_to_suffix_array_left('AP')
-        SA = ['AB', 'ABCAB', 'APXABCAB', 'B', 'BCAB', 'CAB', 'PXABCAB', 'XABCAB']
-        LCP = [-1, 2, 1, 0, 1, 0, 0, 0]
-        assert_equal(SA, x.get_suffix_array())
         assert_equal(LCP, x.get_lcp_array())
