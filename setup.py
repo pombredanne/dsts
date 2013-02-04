@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup(name="dsts",
-      version="0.2",
+      version="0.3",
       description="Python data structures.",
       author="Angelos Molfetas",
       author_email="angelos.molfetas@unimelb.edu.au",
