@@ -132,7 +132,7 @@ class SuffixArray:
         if SA_pos == -1:
             return -1  # not found
         else:
-            return self.get_pos(SA_pos)
+            return self.get_pos_reverse(SA_pos)
 
     def search_SA(self, target):
         """ Searches the suffix array for a substring using binary search on prefixes, returns first instance """
@@ -238,7 +238,7 @@ class ReverseSuffixArray(SuffixArray):
 
     def get_pos_reverse(self, pos):
         """ Returns the position of the suffix array element in the original string in relation to the end of the string """
-        return self.get_sarray_item(pos)
+        return self.suffix_array[pos]
 
     def _sarray_sort(self, x, y):
         """ Sort two integers by comparing substrings in document string """
