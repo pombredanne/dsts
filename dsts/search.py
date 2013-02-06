@@ -9,17 +9,25 @@
 from dsts.suffix_array import ReverseSuffixArray
 
 
-def super_maximal_repeats(string):
+def super_maximal_repeats(string, RSA=None):
     """ Find super maximal repeats """
     strings_found = []
-    SA = ReverseSuffixArray(string[-1])
-    search_str = string[-2]
     i = len(string) - 2
     start_pos = len(string) - 2
+    if RSA is None:
+        SA = ReverseSuffixArray(string[-1])
+        search_str = string[-2]
+    else:
+        SA = RSA
+        i = i - len(RSA.return_original_str()) + 1
+        start_pos = i
+        search_str = string[i]
     prev_found = 0
     length = 0
+    print "-->", string
     while True:
         found = SA.search_reverse(search_str)
+        print SA.return_original_str(), search_str, i
         if found != -1:  # Found, move to next character
             if i > 0:
                 start_pos = i
@@ -41,7 +49,9 @@ def super_maximal_repeats(string):
                 start_pos = i
             else:  # There were previous characters that matched
                 strings_found.append((length, start_pos, len(string) - 1 - prev_found))
-                SA.add_to_suffix_array_left(string[i])
+                print "1-->", SA.return_original_str(), string
+                SA.add_to_suffix_array_left(search_str[1:])
+                print "2-->", SA.return_original_str(), string
             search_str = string[i]
             length = 0
     return strings_found
