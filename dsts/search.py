@@ -10,6 +10,78 @@
 from dsts.suffix_array import ReverseSuffixArray
 
 
+def super_maximal_repeats_quad_left(string, reverse=None):
+    """ Identifies super maximal repeats incrementally from left to right """
+    strings_found = []
+    i = len(string) - 1
+    search_str = string[i]
+    prev_found = None
+    length = 0
+
+    while True:
+        found = string.find(search_str, 0, i)
+        print i, found, length, search_str
+        if found != -1:  # Found, move to next character
+            prev_found = found
+            start_pos = i
+            length += 1
+            if i > 0:
+                i -= 1
+            else:  # No further character, we have reached the end of the string
+                strings_found.append((length, start_pos, i))
+                length = 0
+                break
+            search_str = string[i] + search_str
+        else:  # Character not found
+            if len(search_str) == 1:  # Single character does not match, move to next character
+                if i > 1:
+                    i -= 1
+                else:
+                    break
+                start_pos = i
+            else:  # There were previous characters that matched
+                strings_found.append((length, start_pos, prev_found))
+                length = 0
+            search_str = string[i]
+    return strings_found
+
+
+def super_maximal_repeats_quad_right(string, reverse=None):
+    """ Identifies super maximal repeats incrementally from left to right """
+    strings_found = []
+    i = len(string) - 1
+    search_str = string[i]
+    prev_found = None
+    length = 0
+
+    while True:
+        found = string.find(search_str, 0, i)
+        print i, found, length, search_str
+        if found != -1:  # Found, move to next character
+            prev_found = found
+            start_pos = i
+            length += 1
+            if i > 0:
+                i -= 1
+            else:  # No further character, we have reached the end of the string
+                strings_found.append((length, start_pos, i))
+                length = 0
+                break
+            search_str = string[i] + search_str
+        else:  # Character not found
+            if len(search_str) == 1:  # Single character does not match, move to next character
+                if i > 1:
+                    i -= 1
+                else:
+                    break
+                start_pos = i
+            else:  # There were previous characters that matched
+                strings_found.append((length, start_pos, prev_found))
+                length = 0
+            search_str = string[i]
+    return strings_found
+
+
 def super_maximal_repeats(string, RSA=None, reverse=False):
     """ Find super maximal repeats
         :RSA: Use supplied Reverse Suffix Array
@@ -65,40 +137,4 @@ def super_maximal_repeats(string, RSA=None, reverse=False):
                 SA.add_to_suffix_array_left(search_str[1:])
             search_str = string[i]
             length = 0
-    return strings_found
-
-
-def super_maximal_repeats_quad(string, reverse=None):
-    """ Identifies super maximal repeats incrementally from left to right (quandric complexity) """
-    strings_found = []
-    i = len(string) - 1
-    search_str = string[i]
-    prev_found = None
-    length = 0
-
-    while True:
-        found = string.find(search_str, 0, i)
-        print i, found, length, search_str
-        if found != -1:  # Found, move to next character
-            prev_found = found
-            start_pos = i
-            length += 1
-            if i > 0:
-                i -= 1
-            else:  # No further character, we have reached the end of the string
-                strings_found.append((length, start_pos, i))
-                length = 0
-                break
-            search_str = string[i] + search_str
-        else:  # Character not found
-            if len(search_str) == 1:  # Single character does not match, move to next character
-                if i > 1:
-                    i -= 1
-                else:
-                    break
-                start_pos = i
-            else:  # There were previous characters that matched
-                strings_found.append((length, start_pos, prev_found))
-                length = 0
-            search_str = string[i]
     return strings_found
