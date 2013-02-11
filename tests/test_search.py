@@ -72,3 +72,9 @@ class Test_Search:
         assert_equal(x, answer)
         x = super_maximal_repeats('BCABCAB', RSA=SA, reverse=True)
         answer = [(7, 15, 8)]
+
+    def test_super_maximal_repeats_non_ends(self):
+        """ SEARCH: Find super maximal repeats, where these repeats are not at the ends of the string """
+        x = super_maximal_repeats('AZZBZZC')
+        answer = [(1, 4, 5), (2, 1, 4)]
+        assert_equal(x, answer)
