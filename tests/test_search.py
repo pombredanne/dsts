@@ -7,9 +7,11 @@
 # Licence: BSD Licence, see attached LICENCE file
 # ----------------------------------------------------------------
 
-from dsts.search import super_maximal_repeats
+from dsts.search import super_maximal_repeats_left
+from dsts.search import super_maximal_repeats_right, super_maximal_repeats_quad_right
 from dsts.suffix_array import ReverseSuffixArray
 from nose.tools import assert_equal, raises
+from os.path import dirname, realpath
 
 
 class Test_Search:
@@ -36,45 +38,64 @@ class Test_Search:
     def test_super_maximal_repeats_pass_RSA(self):
         """ SEARCH: Find Super maximal repeats by parsing file into a provided reverse suffix array """
         RSA = ReverseSuffixArray('ABC')
-        x = super_maximal_repeats('ABCABCABC', RSA)
+        x = super_maximal_repeats_left('ABCABCABC', RSA)
         answer = [(3, 6, 9), (6, 0, 6)]
         assert_equal(x, answer)
 
     def test_super_maximal_repeats_pass_reverse(self):
         """ SEARCH: Find super maximal repeats by parsing file into a reverse suffix array. Reverse indexes """
-        x = super_maximal_repeats('ABCAB', reverse=True)
+        x = super_maximal_repeats_left('ABCAB', reverse=True)
         answer = [(2, 4, 1)]
         assert_equal(x, answer)
-        x = super_maximal_repeats('ABCABC', reverse=True)
+        x = super_maximal_repeats_left('ABCABC', reverse=True)
         answer = [(3, 5, 2)]
         assert_equal(x, answer)
-        x = super_maximal_repeats('ABCABCABC', reverse=True)
+        x = super_maximal_repeats_left('ABCABCABC', reverse=True)
         answer = [(3, 5, 2), (3, 8, 5)]
         assert_equal(x, answer)
-        x = super_maximal_repeats('DCBABCCDCBA', reverse=True)
+        x = super_maximal_repeats_left('DCBABCCDCBA', reverse=True)
         answer = [(1, 4, 2), (1, 5, 2), (1, 6, 1), (4, 10, 3)]
         assert_equal(x, answer)
-        x = super_maximal_repeats('ABCABCABCABC', reverse=True)
+        x = super_maximal_repeats_left('ABCABCABCABC', reverse=True)
         answer = [(3, 5, 2), (6, 11, 5)]
         assert_equal(x, answer)
 
     def test_super_maximal_repeats_pass_rsa_and_reverse(self):
         """ SEARCH: Find super maximal repeats. Reverse indexes, provide reverse suffix array """
         SA = ReverseSuffixArray('C')
-        x = super_maximal_repeats('AB', RSA=SA, reverse=True)
+        x = super_maximal_repeats_left('AB', RSA=SA, reverse=True)
         answer = []
         assert_equal(x, answer)
-        x = super_maximal_repeats('ABC', RSA=SA, reverse=True)
+        x = super_maximal_repeats_left('ABC', RSA=SA, reverse=True)
         answer = [(3, 5, 2)]
         assert_equal(x, answer)
-        x = super_maximal_repeats('ABC', RSA=SA, reverse=True)
+        x = super_maximal_repeats_left('ABC', RSA=SA, reverse=True)
         answer = [(3, 8, 5)]
         assert_equal(x, answer)
-        x = super_maximal_repeats('BCABCAB', RSA=SA, reverse=True)
+        x = super_maximal_repeats_left('BCABCAB', RSA=SA, reverse=True)
         answer = [(7, 15, 8)]
 
     def test_super_maximal_repeats_non_ends(self):
         """ SEARCH: Find super maximal repeats, where these repeats are not at the ends of the string """
-        x = super_maximal_repeats('AZZBZZC')
+        x = super_maximal_repeats_left('AZZBZZC')
         answer = [(1, 4, 5), (2, 1, 4)]
         assert_equal(x, answer)
+
+    def test_super_maximal_repeats_quad_right(self):
+        """ SEARCH: Find super maximal repeats, where second character not matched """
+        x = super_maximal_repeats_quad_right('doddoddoddod')
+        answer = [(1, 2, 0), (3, 3, 0), (6, 6, 0)]
+        assert_equal(x, answer)
+
+    def test_super_maximal_repeats(self):
+        """ SEARCH: Find super maximal repeats, where second character not matched """
+        x = super_maximal_repeats_left('doddoddoddod')
+        answer = [(1, 9, 11), (3, 6, 9), (6, 0, 6)]
+        assert_equal(x, answer)
+
+    def test_super_maximal_repeats_right_vs_quad(self):
+        """ SEARCH: Test super maximal repeats against quad algorithm """
+        string = "bc5abca1bcabc"
+        pairs1 = super_maximal_repeats_right(string)
+        pairs2 = super_maximal_repeats_quad_right(string)
+        assert_equal(pairs1, pairs2)

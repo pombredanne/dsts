@@ -53,6 +53,7 @@ class TestRevSuffixArray:
         loc = dirname(realpath(__file__))
         f = open('%s/samples/Greek-Lipsum.txt' % loc, 'r')
         tmp_str = f.read()
+        f.close()
         sarray = SuffixArray(string=tmp_str)
 
     def test_array_as_str(self):

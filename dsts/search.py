@@ -10,80 +10,48 @@
 from dsts.suffix_array import ReverseSuffixArray
 
 
-def super_maximal_repeats_quad_left(string, reverse=None):
-    """ Identifies super maximal repeats incrementally from left to right """
-    strings_found = []
-    i = len(string) - 1
-    search_str = string[i]
-    prev_found = None
-    length = 0
-
-    while True:
-        found = string.find(search_str, 0, i)
-        print i, found, length, search_str
-        if found != -1:  # Found, move to next character
-            prev_found = found
-            start_pos = i
-            length += 1
-            if i > 0:
-                i -= 1
-            else:  # No further character, we have reached the end of the string
-                strings_found.append((length, start_pos, i))
-                length = 0
-                break
-            search_str = string[i] + search_str
-        else:  # Character not found
-            if len(search_str) == 1:  # Single character does not match, move to next character
-                if i > 1:
-                    i -= 1
-                else:
-                    break
-                start_pos = i
-            else:  # There were previous characters that matched
-                strings_found.append((length, start_pos, prev_found))
-                length = 0
-            search_str = string[i]
-    return strings_found
-
-
 def super_maximal_repeats_quad_right(string, reverse=None):
     """ Identifies super maximal repeats incrementally from left to right """
     strings_found = []
-    i = len(string) - 1
+    i = 0
     search_str = string[i]
     prev_found = None
     length = 0
+    start_pos = i
+    search_until = 0
 
     while True:
-        found = string.find(search_str, 0, i)
-        print i, found, length, search_str
+        found = string.find(search_str, 0, search_until)
+        print i, found, length, search_str, start_pos, string[0:search_until]
         if found != -1:  # Found, move to next character
             prev_found = found
-            start_pos = i
             length += 1
-            if i > 0:
-                i -= 1
+            if i < len(string) - 1:
+                i += 1
             else:  # No further character, we have reached the end of the string
-                strings_found.append((length, start_pos, i))
+                # print "==>", (length, start_pos, prev_found)
+                strings_found.append((length, start_pos, prev_found))
+                search_until = i
                 length = 0
                 break
-            search_str = string[i] + search_str
+            search_str = search_str + string[i]
         else:  # Character not found
             if len(search_str) == 1:  # Single character does not match, move to next character
-                if i > 1:
-                    i -= 1
+                if i < len(string) - 1:
+                    i += 1
                 else:
                     break
-                start_pos = i
             else:  # There were previous characters that matched
                 strings_found.append((length, start_pos, prev_found))
                 length = 0
+            start_pos = i
+            search_until = i
             search_str = string[i]
     return strings_found
 
 
-def super_maximal_repeats(string, RSA=None, reverse=False):
-    """ Find super maximal repeats
+def super_maximal_repeats_left(string, RSA=None, reverse=False):
+    """ Find super maximal repeats, left to right
         :RSA: Use supplied Reverse Suffix Array
         :reverse: Provide string locations numbered from left to right
     """
@@ -138,3 +106,17 @@ def super_maximal_repeats(string, RSA=None, reverse=False):
             search_str = string[i]
             length = 0
     return strings_found
+
+
+def super_maximal_repeats_right(string, RSA=None, reverse=False):
+    """ Find super maximal repeats, right to left
+        :RSA: Use supplied Reverse Suffix Array
+        :reverse: Provide string locations numbered from left to right
+    """
+    updated_list = []
+    repeats = super_maximal_repeats_left(string[::-1], RSA=RSA, reverse=True)
+
+    print "repeats", repeats
+    for item in repeats:
+        updated_list.append((item[0], item[1] - item[0] + 1, item[2] - item[0] + 1))
+    return updated_list
