@@ -99,3 +99,18 @@ class Test_Search:
         pairs1 = super_maximal_repeats_right(string)
         pairs2 = super_maximal_repeats_quad_right(string)
         assert_equal(pairs1, pairs2)
+
+    def test_super_maximal_repeats_right_delimeter(self):
+        """ SEARCH: Test super maximal repeats using delimeter characters """
+        string = "abc$abc$abc$abc"  # Testing delimeter characters in the middle
+        expected = [(3, 4, 0), (3, 8, 0), (3, 12, 0)]
+        actual = super_maximal_repeats_right(string, ignore='$')
+        assert_equal(expected, actual)
+        string = "$doddod$doddod$"  # Testing delimeter characters in the ends
+        expected = [(1, 3, 1), (3, 4, 1), (6, 8, 1)]
+        actual = super_maximal_repeats_right(string, ignore='$')
+        assert_equal(expected, actual)
+        string = "132\a123\a123\a"  # Testing non printable delimeter character
+        expected = [(1, 4, 0), (1, 5, 2), (1, 6, 1), (3, 8, 4)]
+        actual = super_maximal_repeats_right(string, ignore='\a')
+        assert_equal(expected, actual)
