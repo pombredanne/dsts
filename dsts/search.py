@@ -57,6 +57,9 @@ def super_maximal_repeats_left(string, RSA=None, reverse=False, ignore=None):
     """
     strings_found = []
 
+    if string == "":
+        raise TypeError("Error: Empty string supplied")
+
     start_pos = len(string) - 2
     if RSA is None:
         SA = ReverseSuffixArray(string[-1])
@@ -119,6 +122,10 @@ def super_maximal_repeats_right(string, RSA=None, reverse=False, ignore=None):
         :RSA: Use supplied Reverse Suffix Array
         :reverse: Provide string locations numbered from left to right
     """
+
+    if string == "":
+        raise TypeError("Error: Empty string supplied")
+
     updated_list = []
     repeats = super_maximal_repeats_left(string[::-1], RSA=RSA, reverse=True, ignore=ignore)
 

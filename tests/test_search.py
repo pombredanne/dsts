@@ -114,3 +114,13 @@ class Test_Search:
         expected = [(1, 4, 0), (1, 5, 2), (1, 6, 1), (3, 8, 4)]
         actual = super_maximal_repeats_right(string, ignore='\a')
         assert_equal(expected, actual)
+
+    @raises(TypeError)
+    def test_super_maximal_repeats_right_empty(self):
+        """ SEARCH: Test super maximal repeats right with empty string """
+        super_maximal_repeats_right("")
+
+    @raises(TypeError)
+    def test_super_maximal_repeats_left_empty(self):
+        """ SEARCH: Test super maximal repeats left with empty string """
+        super_maximal_repeats_left("")
