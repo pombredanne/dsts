@@ -129,7 +129,6 @@ def super_maximal_repeats_right(string, RSA=None, reverse=False, ignore=None):
     updated_list = []
     repeats = super_maximal_repeats_left(string[::-1], RSA=RSA, reverse=True, ignore=ignore)
 
-    print "repeats", repeats
     for item in repeats:
         updated_list.append((item[0], item[1] - item[0] + 1, item[2] - item[0] + 1))
     return updated_list
