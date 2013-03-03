@@ -2,10 +2,12 @@
 
 # ----------------------------------------------------------------
 # Description: Testing module for SuffixArray class. Uses nosetest
-# Author: Angelos Molfetas (2012)
+# Author: Angelos Molfetas (2012, 2013)
+# Copyright: University of Melbourne (2012, 2013)
 # Licence: BSD Licence, see attached LICENCE file
 # ----------------------------------------------------------------
 
+from dsts.misc import get_smp_file
 from dsts.suffix_array import SuffixArray, ReverseSuffixArray
 from nose.tools import assert_equal, raises
 from os import remove, makedirs
@@ -50,10 +52,7 @@ class TestRevSuffixArray:
 
     def test_init_greek(self):
         """ REV_SARRAY: Test loading file with non standard ascii characters """
-        loc = dirname(realpath(__file__))
-        f = open('%s/samples/Greek-Lipsum.txt' % loc, 'r')
-        tmp_str = f.read()
-        f.close()
+        tmp_str = get_smp_file('Greek-Lipsum.txt')
         sarray = SuffixArray(string=tmp_str)
 
     def test_array_as_str(self):
@@ -153,6 +152,16 @@ class TestRevSuffixArray:
         LCP = [-1, 2, 0, 1, 0]
         assert_equal(LCP, x.get_lcp_array())
 
+    def test_to_existing_array(self):
+        """ REV SARRAY: Adding left to an exisiting reverse suffix array"""
+        SA = ReverseSuffixArray("AB")
+        SA.add_to_suffix_array_left("C")
+        SA.add_to_suffix_array_left("B")
+        SA.add_to_suffix_array_left("A")
+        assert_equal(SA.return_original_str(), "ABCAB")
+        suffixes = ['AB', 'ABCAB', 'B', 'BCAB', 'CAB']
+        assert_equal(SA.get_suffix_array(), suffixes)
+
 
 class TestSuffixArray:
     """ Testsing module for the Suffix Array """
@@ -190,9 +199,7 @@ class TestSuffixArray:
 
     def test_init_greek(self):
         """ SARRAY: Test loading file with non standard ascii characters """
-        loc = dirname(realpath(__file__))
-        f = open('%s/samples/Greek-Lipsum.txt' % loc, 'r')
-        tmp_str = f.read()
+        tmp_str = get_smp_file('Greek-Lipsum.txt')
         sarray = SuffixArray(string=tmp_str)
 
     def test_array_as_str(self):
