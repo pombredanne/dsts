@@ -1,35 +1,1250 @@
-HORATIO 
-And then it started like a guilty thing
-Upon a fearful summons. I have heard,
-The cock, that is the trumpet to the morn,
-Doth with his lofty and shrill-sounding throat
-Awake the god of day; and, at his warning,
-Whether in sea or fire, in earth or air,
-The extravagant and erring spirit hies
-To his confine: and of the truth herein
-This present object made probation.
+***The Project Gutenberg's Etext of Shakespeare's First Folio***
+*********************The Tragedie of Hamlet*********************
 
-MARCELLUS 
-It faded on the crowing of the cock.
-Some say that ever 'gainst that season comes
-Wherein our Saviour's birth is celebrated,
-The bird of dawning singeth all night long:
-And then, they say, no spirit dares stir abroad;
-The nights are wholesome; then no planets strike,
-No fairy takes, nor witch hath power to charm,
-So hallow'd and so gracious is the time.
+This is our 3rd edition of most of these plays.  See the index.
 
-HORATIO 
-So have I heard and do in part believe it.
-But, look, the morn, in russet mantle clad,
-Walks o'er the dew of yon high eastward hill:
-Break we our watch up; and by my advice,
-Let us impart what we have seen to-night
-Unto young Hamlet; for, upon my life,
-This spirit, dumb to us, will speak to him.
+
+Copyright laws are changing all over the world, be sure to check
+the copyright laws for your country before posting these files!!
+
+Please take a look at the important information in this header.
+We encourage you to keep this file on your own disk, keeping an
+electronic path open for the next readers.  Do not remove this.
+
+
+**Welcome To The World of Free Plain Vanilla Electronic Texts**
+
+**Etexts Readable By Both Humans and By Computers, Since 1971**
+
+*These Etexts Prepared By Hundreds of Volunteers and Donations*
+
+Information on contacting Project Gutenberg to get Etexts, and
+further information is included below.  We need your donations.
+
+
+The Tragedie of Hamlet
+
+by William Shakespeare
+
+July, 2000  [Etext #2265]
+
+
+***The Project Gutenberg's Etext of Shakespeare's First Folio***
+*********************The Tragedie of Hamlet*********************
+
+*****This file should be named 0ws2610.txt or 0ws2610.zip******
+
+Corrected EDITIONS of our etexts get a new NUMBER, 0ws2611.txt
+VERSIONS based on separate sources get new LETTER, 0ws2610a.txt
+
+
+Project Gutenberg Etexts are usually created from multiple editions,
+all of which are in the Public Domain in the United States, unless a
+copyright notice is included.  Therefore, we usually do NOT keep any
+of these books in compliance with any particular paper edition.
+
+
+We are now trying to release all our books one month in advance
+of the official release dates, leaving time for better editing.
+
+Please note:  neither this list nor its contents are final till
+midnight of the last day of the month of any such announcement.
+The official release date of all Project Gutenberg Etexts is at
+Midnight, Central Time, of the last day of the stated month.  A
+preliminary version may often be posted for suggestion, comment
+and editing by those who wish to do so.  To be sure you have an
+up to date first edition [xxxxx10x.xxx] please check file sizes
+in the first week of the next month.  Since our ftp program has
+a bug in it that scrambles the date [tried to fix and failed] a
+look at the file size will have to do, but we will try to see a
+new copy has at least one byte more or less.
+
+
+Information about Project Gutenberg (one page)
+
+We produce about two million dollars for each hour we work.  The
+time it takes us, a rather conservative estimate, is fifty hours
+to get any etext selected, entered, proofread, edited, copyright
+searched and analyzed, the copyright letters written, etc.  This
+projected audience is one hundred million readers.  If our value
+per text is nominally estimated at one dollar then we produce $2
+million dollars per hour this year as we release thirty-six text
+files per month, or 432 more Etexts in 1999 for a total of 2000+
+If these reach just 10% of the computerized population, then the
+total should reach over 200 billion Etexts given away this year.
+
+The Goal of Project Gutenberg is to Give Away One Trillion Etext
+Files by December 31, 2001.  [10,000 x 100,000,000 = 1 Trillion]
+This is ten thousand titles each to one hundred million readers,
+which is only ~5% of the present number of computer users.
+
+At our revised rates of production, we will reach only one-third
+of that goal by the end of 2001, or about 3,333 Etexts unless we
+manage to get some real funding; currently our funding is mostly
+from Michael Hart's salary at Carnegie-Mellon University, and an
+assortment of sporadic gifts; this salary is only good for a few
+more years, so we are looking for something to replace it, as we
+don't want Project Gutenberg to be so dependent on one person.
+
+We need your donations more than ever!
+
+
+All donations should be made to "Project Gutenberg/CMU": and are
+tax deductible to the extent allowable by law.  (CMU = Carnegie-
+Mellon University).
+
+For these and other matters, please mail to:
+
+Project Gutenberg
+P. O. Box  2782
+Champaign, IL 61825
+
+When all other email fails. . .try our Executive Director:
+Michael S. Hart <hart@pobox.com>
+hart@pobox.com forwards to hart@prairienet.org and archive.org
+if your mail bounces from archive.org, I will still see it, if
+it bounces from prairienet.org, better resend later on. . . .
+
+We would prefer to send you this information by email.
+
+******
+
+To access Project Gutenberg etexts, use any Web browser
+to view http://promo.net/pg.  This site lists Etexts by
+author and by title, and includes information about how
+to get involved with Project Gutenberg.  You could also
+download our past Newsletters, or subscribe here.  This
+is one of our major sites, please email hart@pobox.com,
+for a more complete list of our various sites.
+
+To go directly to the etext collections, use FTP or any
+Web browser to visit a Project Gutenberg mirror (mirror
+sites are available on 7 continents; mirrors are listed
+at http://promo.net/pg).
+
+Mac users, do NOT point and click, typing works better.
+
+Example FTP session:
+
+ftp sunsite.unc.edu
+login: anonymous
+password: your@login
+cd pub/docs/books/gutenberg
+cd etext90 through etext99
+dir [to see files]
+get or mget [to get files. . .set bin for zip files]
+GET GUTINDEX.??  [to get a year's listing of books, e.g., GUTINDEX.99]
+GET GUTINDEX.ALL [to get a listing of ALL books]
+
+***
+
+**Information prepared by the Project Gutenberg legal advisor**
+
+(Three Pages)
+
+
+***START**THE SMALL PRINT!**FOR PUBLIC DOMAIN ETEXTS**START***
+Why is this "Small Print!" statement here?  You know: lawyers.
+They tell us you might sue us if there is something wrong with
+your copy of this etext, even if you got it for free from
+someone other than us, and even if what's wrong is not our
+fault.  So, among other things, this "Small Print!" statement
+disclaims most of our liability to you.  It also tells you how
+you can distribute copies of this etext if you want to.
+
+*BEFORE!* YOU USE OR READ THIS ETEXT
+By using or reading any part of this PROJECT GUTENBERG-tm
+etext, you indicate that you understand, agree to and accept
+this "Small Print!" statement.  If you do not, you can receive
+a refund of the money (if any) you paid for this etext by
+sending a request within 30 days of receiving it to the person
+you got it from.  If you received this etext on a physical
+medium (such as a disk), you must return it with your request.
+
+ABOUT PROJECT GUTENBERG-TM ETEXTS
+This PROJECT GUTENBERG-tm etext, like most PROJECT GUTENBERG-
+tm etexts, is a "public domain" work distributed by Professor
+Michael S. Hart through the Project Gutenberg Association at
+Carnegie-Mellon University (the "Project").  Among other
+things, this means that no one owns a United States copyright
+on or for this work, so the Project (and you!) can copy and
+distribute it in the United States without permission and
+without paying copyright royalties.  Special rules, set forth
+below, apply if you wish to copy and distribute this etext
+under the Project's "PROJECT GUTENBERG" trademark.
+
+To create these etexts, the Project expends considerable
+efforts to identify, transcribe and proofread public domain
+works.  Despite these efforts, the Project's etexts and any
+medium they may be on may contain "Defects".  Among other
+things, Defects may take the form of incomplete, inaccurate or
+corrupt data, transcription errors, a copyright or other
+intellectual property infringement, a defective or damaged
+disk or other etext medium, a computer virus, or computer
+codes that damage or cannot be read by your equipment.
+
+LIMITED WARRANTY; DISCLAIMER OF DAMAGES
+But for the "Right of Replacement or Refund" described below,
+[1] the Project (and any other party you may receive this
+etext from as a PROJECT GUTENBERG-tm etext) disclaims all
+liability to you for damages, costs and expenses, including
+legal fees, and [2] YOU HAVE NO REMEDIES FOR NEGLIGENCE OR
+UNDER STRICT LIABILITY, OR FOR BREACH OF WARRANTY OR CONTRACT,
+INCLUDING BUT NOT LIMITED TO INDIRECT, CONSEQUENTIAL, PUNITIVE
+OR INCIDENTAL DAMAGES, EVEN IF YOU GIVE NOTICE OF THE
+POSSIBILITY OF SUCH DAMAGES.
+
+If you discover a Defect in this etext within 90 days of
+receiving it, you can receive a refund of the money (if any)
+you paid for it by sending an explanatory note within that
+time to the person you received it from.  If you received it
+on a physical medium, you must return it with your note, and
+such person may choose to alternatively give you a replacement
+copy.  If you received it electronically, such person may
+choose to alternatively give you a second opportunity to
+receive it electronically.
+
+THIS ETEXT IS OTHERWISE PROVIDED TO YOU "AS-IS".  NO OTHER
+WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, ARE MADE TO YOU AS
+TO THE ETEXT OR ANY MEDIUM IT MAY BE ON, INCLUDING BUT NOT
+LIMITED TO WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A
+PARTICULAR PURPOSE.
+
+Some states do not allow disclaimers of implied warranties or
+the exclusion or limitation of consequential damages, so the
+above disclaimers and exclusions may not apply to you, and you
+may have other legal rights.
+
+INDEMNITY
+You will indemnify and hold the Project, its directors,
+officers, members and agents harmless from all liability, cost
+and expense, including legal fees, that arise directly or
+indirectly from any of the following that you do or cause:
+[1] distribution of this etext, [2] alteration, modification,
+or addition to the etext, or [3] any Defect.
+
+DISTRIBUTION UNDER "PROJECT GUTENBERG-tm"
+You may distribute copies of this etext electronically, or by
+disk, book or any other medium if you either delete this
+"Small Print!" and all other references to Project Gutenberg,
+or:
+
+[1]  Only give exact copies of it.  Among other things, this
+     requires that you do not remove, alter or modify the
+     etext or this "small print!" statement.  You may however,
+     if you wish, distribute this etext in machine readable
+     binary, compressed, mark-up, or proprietary form,
+     including any form resulting from conversion by word pro-
+     cessing or hypertext software, but only so long as
+     *EITHER*:
+
+     [*]  The etext, when displayed, is clearly readable, and
+          does *not* contain characters other than those
+          intended by the author of the work, although tilde
+          (~), asterisk (*) and underline (_) characters may
+          be used to convey punctuation intended by the
+          author, and additional characters may be used to
+          indicate hypertext links; OR
+
+     [*]  The etext may be readily converted by the reader at
+          no expense into plain ASCII, EBCDIC or equivalent
+          form by the program that displays the etext (as is
+          the case, for instance, with most word processors);
+          OR
+
+     [*]  You provide, or agree to also provide on request at
+          no additional cost, fee or expense, a copy of the
+          etext in its original plain ASCII form (or in EBCDIC
+          or other equivalent proprietary form).
+
+[2]  Honor the etext refund and replacement provisions of this
+     "Small Print!" statement.
+
+[3]  Pay a trademark license fee to the Project of 20% of the
+     net profits you derive calculated using the method you
+     already use to calculate your applicable taxes.  If you
+     don't derive profits, no royalty is due.  Royalties are
+     payable to "Project Gutenberg Association/Carnegie-Mellon
+     University" within the 60 days following each
+     date you prepare (or were legally required to prepare)
+     your annual (or equivalent periodic) tax return.
+
+WHAT IF YOU *WANT* TO SEND MONEY EVEN IF YOU DON'T HAVE TO?
+The Project gratefully accepts contributions in money, time,
+scanning machines, OCR software, public domain etexts, royalty
+free copyright licenses, and every other sort of contribution
+you can think of.  Money should be paid to "Project Gutenberg
+Association / Carnegie-Mellon University".
+
+*END*THE SMALL PRINT! FOR PUBLIC DOMAIN ETEXTS*Ver.04.29.93*END*
+
+
+
+
+
+Project Gutenberg's Etext of Shakespeare's The Tragedie of Hamlet
+
+
+
+
+Executive Director's Notes:
+
+In addition to the notes below, and so you will *NOT* think all
+the spelling errors introduced by the printers of the time have
+been corrected, here are the first few lines of Hamlet, as they
+are presented herein:
+
+  Barnardo. Who's there?
+  Fran. Nay answer me: Stand & vnfold
+your selfe
+
+   Bar. Long liue the King
+
+***
+
+As I understand it, the printers often ran out of certain words
+or letters they had often packed into a "cliche". . .this is the
+original meaning of the term cliche. . .and thus, being unwilling
+to unpack the cliches, and thus you will see some substitutions
+that look very odd. . .such as the exchanges of u for v, v for u,
+above. . .and you may wonder why they did it this way, presuming
+Shakespeare did not actually write the play in this manner. . . .
+
+The answer is that they MAY have packed "liue" into a cliche at a
+time when they were out of "v"'s. . .possibly having used "vv" in
+place of some "w"'s, etc.  This was a common practice of the day,
+as print was still quite expensive, and they didn't want to spend
+more on a wider selection of characters than they had to.
+
+You will find a lot of these kinds of "errors" in this text, as I
+have mentioned in other times and places, many "scholars" have an
+extreme attachment to these errors, and many have accorded them a
+very high place in the "canon" of Shakespeare.  My father read an
+assortment of these made available to him by Cambridge University
+in England for several months in a glass room constructed for the
+purpose.  To the best of my knowledge he read ALL those available
+. . .in great detail. . .and determined from the various changes,
+that Shakespeare most likely did not write in nearly as many of a
+variety of errors we credit him for, even though he was in/famous
+for signing his name with several different spellings.
+
+So, please take this into account when reading the comments below
+made by our volunteer who prepared this file:  you may see errors
+that are "not" errors. . . .
+
+So. . .with this caveat. . .we have NOT changed the canon errors,
+here is the Project Gutenberg Etext of Shakespeare's The Tragedie 
+of Hamlet.
+
+Michael S. Hart
+Project Gutenberg
+Executive Director
+
+
+***
+
+
+Scanner's Notes: What this is and isn't.  This was taken from
+a copy of Shakespeare's first folio and it is as close as I can 
+come in ASCII to the printed text.
+
+The elongated S's have been changed to small s's and the
+conjoined ae have been changed to ae.  I have left the spelling,
+punctuation, capitalization as close as possible to the
+printed text.  I have corrected some spelling mistakes (I have put
+together a spelling dictionary devised from the spellings of the
+Geneva Bible and Shakespeare's First Folio and have unified
+spellings according to this template), typo's and expanded
+abbreviations as I have come across them.  Everything within
+brackets [] is what I have added.  So if you don't like that
+you can delete everything within the brackets if you want a
+purer Shakespeare.
+
+Another thing that you should be aware of is that there are textual
+differences between various copies of the first folio.  So there may
+be differences (other than what I have mentioned above) between
+this and other first folio editions.  This is due to the printer's
+habit of setting the type and running off a number of copies and
+then proofing the printed copy and correcting the type and then
+continuing the printing run.  The proof run wasn't thrown away but
+incorporated into the printed copies.  This is just the way it is.
+The text I have used was a composite of more than 30 different
+First Folio editions' best pages.
+
+If you find any scanning errors, out and out typos, punctuation
+errors, or if you disagree with my spelling choices please feel
+free to email me those errors.  I wish to make this the best
+etext possible.  My email address for right now are haradda@aol.com
+and davidr@inconnect.com.  I hope that you enjoy this.
+
+David Reed
+
+The Tragedie of Hamlet
+
+Actus Primus. Scoena Prima.
+
+Enter Barnardo and Francisco two Centinels.
+
+  Barnardo. Who's there?
+  Fran. Nay answer me: Stand & vnfold
+your selfe
+
+   Bar. Long liue the King
+
+   Fran. Barnardo?
+  Bar. He
+
+   Fran. You come most carefully vpon your houre
+
+   Bar. 'Tis now strook twelue, get thee to bed Francisco
+
+   Fran. For this releefe much thankes: 'Tis bitter cold,
+And I am sicke at heart
+
+   Barn. Haue you had quiet Guard?
+  Fran. Not a Mouse stirring
+
+   Barn. Well, goodnight. If you do meet Horatio and
+Marcellus, the Riuals of my Watch, bid them make hast.
+Enter Horatio and Marcellus.
+
+  Fran. I thinke I heare them. Stand: who's there?
+  Hor. Friends to this ground
+
+   Mar. And Leige-men to the Dane
+
+   Fran. Giue you good night
+
+   Mar. O farwel honest Soldier, who hath relieu'd you?
+  Fra. Barnardo ha's my place: giue you goodnight.
+
+Exit Fran.
+
+  Mar. Holla Barnardo
+
+   Bar. Say, what is Horatio there?
+  Hor. A peece of him
+
+   Bar. Welcome Horatio, welcome good Marcellus
+
+   Mar. What, ha's this thing appear'd againe to night
+
+   Bar. I haue seene nothing
+
+   Mar. Horatio saies, 'tis but our Fantasie,
+And will not let beleefe take hold of him
+Touching this dreaded sight, twice seene of vs,
+Therefore I haue intreated him along
+With vs, to watch the minutes of this Night,
+That if againe this Apparition come,
+He may approue our eyes, and speake to it
+
+   Hor. Tush, tush, 'twill not appeare
+
+   Bar. Sit downe a-while,
+And let vs once againe assaile your eares,
+That are so fortified against our Story,
+What we two Nights haue seene
+
+   Hor. Well, sit we downe,
+And let vs heare Barnardo speake of this
+
+   Barn. Last night of all,
+When yond same Starre that's Westward from the Pole
+Had made his course t' illume that part of Heauen
+Where now it burnes, Marcellus and my selfe,
+The Bell then beating one
+
+   Mar. Peace, breake thee of:
+Enter the Ghost.
+
+Looke where it comes againe
+
+   Barn. In the same figure, like the King that's dead
+
+   Mar. Thou art a Scholler; speake to it Horatio
+
+   Barn. Lookes it not like the King? Marke it Horatio
+
+   Hora. Most like: It harrowes me with fear & wonder
+  Barn. It would be spoke too
+
+   Mar. Question it Horatio
+
+   Hor. What art thou that vsurp'st this time of night,
+Together with that Faire and Warlike forme
+In which the Maiesty of buried Denmarke
+Did sometimes march: By Heauen I charge thee speake
+
+   Mar. It is offended
+
+   Barn. See, it stalkes away
+
+   Hor. Stay: speake; speake: I Charge thee, speake.
+
+Exit the Ghost.
+
+  Mar. 'Tis gone, and will not answer
+
+   Barn. How now Horatio? You tremble & look pale:
+Is not this something more then Fantasie?
+What thinke you on't?
+  Hor. Before my God, I might not this beleeue
+Without the sensible and true auouch
+Of mine owne eyes
+
+   Mar. Is it not like the King?
+  Hor. As thou art to thy selfe,
+Such was the very Armour he had on,
+When th' Ambitious Norwey combatted:
+So frown'd he once, when in an angry parle
+He smot the sledded Pollax on the Ice.
+'Tis strange
+
+   Mar. Thus twice before, and iust at this dead houre,
+With Martiall stalke, hath he gone by our Watch
+
+   Hor. In what particular thought to work, I know not:
+But in the grosse and scope of my Opinion,
+This boades some strange erruption to our State
+
+   Mar. Good now sit downe, & tell me he that knowes
+Why this same strict and most obseruant Watch,
+So nightly toyles the subiect of the Land,
+And why such dayly Cast of Brazon Cannon
+And Forraigne Mart for Implements of warre:
+Why such impresse of Ship-wrights, whose sore Taske
+Do's not diuide the Sunday from the weeke,
+What might be toward, that this sweaty hast
+Doth make the Night ioynt-Labourer with the day:
+Who is't that can informe me?
+  Hor. That can I,
+At least the whisper goes so: Our last King,
+Whose Image euen but now appear'd to vs,
+Was (as you know) by Fortinbras of Norway,
+(Thereto prick'd on by a most emulate Pride)
+Dar'd to the Combate. In which, our Valiant Hamlet,
+(For so this side of our knowne world esteem'd him)
+Did slay this Fortinbras: who by a Seal'd Compact,
+Well ratified by Law, and Heraldrie,
+Did forfeite (with his life) all those his Lands
+Which he stood seiz'd on, to the Conqueror:
+Against the which, a Moity competent
+Was gaged by our King: which had return'd
+To the Inheritance of Fortinbras,
+Had he bin Vanquisher, as by the same Cou'nant
+And carriage of the Article designe,
+His fell to Hamlet. Now sir, young Fortinbras,
+Of vnimproued Mettle, hot and full,
+Hath in the skirts of Norway, heere and there,
+Shark'd vp a List of Landlesse Resolutes,
+For Foode and Diet, to some Enterprize
+That hath a stomacke in't: which is no other
+(And it doth well appeare vnto our State)
+But to recouer of vs by strong hand
+And termes Compulsatiue, those foresaid Lands
+So by his Father lost: and this (I take it)
+Is the maine Motiue of our Preparations,
+The Sourse of this our Watch, and the cheefe head
+Of this post-hast, and Romage in the Land.
+Enter Ghost againe.
+
+But soft, behold: Loe, where it comes againe:
+Ile crosse it, though it blast me. Stay Illusion:
+If thou hast any sound, or vse of Voyce,
+Speake to me. If there be any good thing to be done,
+That may to thee do ease, and grace to me; speak to me.
+If thou art priuy to thy Countries Fate
+(Which happily foreknowing may auoyd) Oh speake.
+Or, if thou hast vp-hoorded in thy life
+Extorted Treasure in the wombe of Earth,
+(For which, they say, you Spirits oft walke in death)
+Speake of it. Stay, and speake. Stop it Marcellus
+
+   Mar. Shall I strike at it with my Partizan?
+  Hor. Do, if it will not stand
+
+   Barn. 'Tis heere
+
+   Hor. 'Tis heere
+
+   Mar. 'Tis gone.
+
+Exit Ghost.
+
+We do it wrong, being so Maiesticall
+To offer it the shew of Violence,
+For it is as the Ayre, invulnerable,
+And our vaine blowes, malicious Mockery
+
+   Barn. It was about to speake, when the Cocke crew
+
+   Hor. And then it started, like a guilty thing
+Vpon a fearfull Summons. I haue heard,
+The Cocke that is the Trumpet to the day,
+Doth with his lofty and shrill-sounding Throate
+Awake the God of Day: and at his warning,
+Whether in Sea, or Fire, in Earth, or Ayre,
+Th' extrauagant, and erring Spirit, hyes
+To his Confine. And of the truth heerein,
+This present Obiect made probation
+
+   Mar. It faded on the crowing of the Cocke.
+Some sayes, that euer 'gainst that Season comes
+Wherein our Sauiours Birch is celebrated,
+The Bird of Dawning singeth all night long:
+And then (they say) no Spirit can walke abroad,
+The nights are wholsome, then no Planets strike,
+No Faiery talkes, nor Witch hath power to Charme:
+So hallow'd, and so gracious is the time
+
+   Hor. So haue I heard, and do in part beleeue it.
+But looke, the Morne in Russet mantle clad,
+Walkes o're the dew of yon high Easterne Hill,
+Breake we our Watch vp, and by my aduice
+Let vs impart what we haue seene to night
+Vnto yong Hamlet. For vpon my life,
+This Spirit dumbe to vs, will speake to him:
 Do you consent we shall acquaint him with it,
-As needful in our loves, fitting our duty?
+As needfull in our Loues, fitting our Duty?
+  Mar. Let do't I pray, and I this morning know
+Where we shall finde him most conueniently.
 
-MARCELLUS 
-Let's do't, I pray; and I this morning know
-Where we shall find him most conveniently.
+Exeunt.
+
+Scena Secunda.
+
+Enter Claudius King of Denmarke, Gertrude the Queene, Hamlet,
+Polonius,
+Laertes, and his Sister Ophelia, Lords Attendant.
+
+  King. Though yet of Hamlet our deere Brothers death
+The memory be greene: and that it vs befitted
+To beare our hearts in greefe, and our whole Kingdome
+To be contracted in one brow of woe:
+Yet so farre hath Discretion fought with Nature,
+That we with wisest sorrow thinke on him,
+Together with remembrance of our selues.
+Therefore our sometimes Sister, now our Queene,
+Th' imperiall Ioyntresse of this warlike State,
+Haue we, as 'twere, with a defeated ioy,
+With one Auspicious, and one Dropping eye,
+With mirth in Funerall, and with Dirge in Marriage,
+In equall Scale weighing Delight and Dole
+Taken to Wife; nor haue we heerein barr'd
+Your better Wisedomes, which haue freely gone
+With this affaire along, for all our Thankes.
+Now followes, that you know young Fortinbras,
+Holding a weake supposall of our worth;
+Or thinking by our late deere Brothers death,
+Our State to be disioynt, and out of Frame,
+Colleagued with the dreame of his Aduantage;
+He hath not fayl'd to pester vs with Message,
+Importing the surrender of those Lands
+Lost by his Father: with all Bonds of Law
+To our most valiant Brother. So much for him.
+Enter Voltemand and Cornelius.
+
+Now for our selfe, and for this time of meeting
+Thus much the businesse is. We haue heere writ
+To Norway, Vncle of young Fortinbras,
+Who Impotent and Bedrid, scarsely heares
+Of this his Nephewes purpose, to suppresse
+His further gate heerein. In that the Leuies,
+The Lists, and full proportions are all made
+Out of his subiect: and we heere dispatch
+You good Cornelius, and you Voltemand,
+For bearing of this greeting to old Norway,
+Giuing to you no further personall power
+To businesse with the King, more then the scope
+Of these dilated Articles allow:
+Farewell, and let your hast commend your duty
+
+   Volt. In that, and all things, will we shew our duty
+
+   King. We doubt it nothing, heartily farewell.
+
+Exit Voltemand and Cornelius.
+
+And now Laertes, what's the newes with you?
+You told vs of some suite. What is't Laertes?
+You cannot speake of Reason to the Dane,
+And loose your voyce. What would'st thou beg Laertes,
+That shall not be my Offer, not thy Asking?
+The Head is not more Natiue to the Heart,
+The Hand more instrumentall to the Mouth,
+Then is the Throne of Denmarke to thy Father.
+What would'st thou haue Laertes?
+  Laer. Dread my Lord,
+Your leaue and fauour to returne to France,
+From whence, though willingly I came to Denmarke
+To shew my duty in your Coronation,
+Yet now I must confesse, that duty done,
+My thoughts and wishes bend againe towards France,
+And bow them to your gracious leaue and pardon
+
+   King. Haue you your Fathers leaue?
+What sayes Pollonius?
+  Pol. He hath my Lord:
+I do beseech you giue him leaue to go
+
+   King. Take thy faire houre Laertes, time be thine,
+And thy best graces spend it at thy will:
+But now my Cosin Hamlet, and my Sonne?
+  Ham. A little more then kin, and lesse then kinde
+
+   King. How is it that the Clouds still hang on you?
+  Ham. Not so my Lord, I am too much i'th' Sun
+
+   Queen. Good Hamlet cast thy nightly colour off,
+And let thine eye looke like a Friend on Denmarke.
+Do not for euer with thy veyled lids
+Seeke for thy Noble Father in the dust;
+Thou know'st 'tis common, all that liues must dye,
+Passing through Nature, to Eternity
+
+   Ham. I Madam, it is common
+
+   Queen. If it be;
+Why seemes it so particular with thee
+
+   Ham. Seemes Madam? Nay, it is: I know not Seemes:
+'Tis not alone my Inky Cloake (good Mother)
+Nor Customary suites of solemne Blacke,
+Nor windy suspiration of forc'd breath,
+No, nor the fruitfull Riuer in the Eye,
+Nor the deiected hauiour of the Visage,
+Together with all Formes, Moods, shewes of Griefe,
+That can denote me truly. These indeed Seeme,
+For they are actions that a man might play:
+But I haue that Within, which passeth show;
+These, but the Trappings, and the Suites of woe
+
+   King. 'Tis sweet and commendable
+In your Nature Hamlet,
+To giue these mourning duties to your Father:
+But you must know, your Father lost a Father,
+That Father lost, lost his, and the Suruiuer bound
+In filiall Obligation, for some terme
+To do obsequious Sorrow. But to perseuer
+In obstinate Condolement, is a course
+Of impious stubbornnesse. 'Tis vnmanly greefe,
+It shewes a will most incorrect to Heauen,
+A Heart vnfortified, a Minde impatient,
+An Vnderstanding simple, and vnschool'd:
+For, what we know must be, and is as common
+As any the most vulgar thing to sence,
+Why should we in our peeuish Opposition
+Take it to heart? Fye, 'tis a fault to Heauen,
+A fault against the Dead, a fault to Nature,
+To Reason most absurd, whose common Theame
+Is death of Fathers, and who still hath cried,
+From the first Coarse, till he that dyed to day,
+This must be so. We pray you throw to earth
+This vnpreuayling woe, and thinke of vs
+As of a Father; For let the world take note,
+You are the most immediate to our Throne,
+And with no lesse Nobility of Loue,
+Then that which deerest Father beares his Sonne,
+Do I impart towards you. For your intent
+In going backe to Schoole in Wittenberg,
+It is most retrograde to our desire:
+And we beseech you, bend you to remaine
+Heere in the cheere and comfort of our eye,
+Our cheefest Courtier Cosin, and our Sonne
+
+   Qu. Let not thy Mother lose her Prayers Hamlet:
+I prythee stay with vs, go not to Wittenberg
+
+   Ham. I shall in all my best
+Obey you Madam
+
+   King. Why 'tis a louing, and a faire Reply,
+Be as our selfe in Denmarke. Madam come,
+This gentle and vnforc'd accord of Hamlet
+Sits smiling to my heart; in grace whereof,
+No iocond health that Denmarke drinkes to day,
+But the great Cannon to the Clowds shall tell,
+And the Kings Rouce, the Heauens shall bruite againe,
+Respeaking earthly Thunder. Come away.
+
+Exeunt.
+
+Manet Hamlet.
+
+  Ham. Oh that this too too solid Flesh, would melt,
+Thaw, and resolue it selfe into a Dew:
+Or that the Euerlasting had not fixt
+His Cannon 'gainst Selfe-slaughter. O God, O God!
+How weary, stale, flat, and vnprofitable
+Seemes to me all the vses of this world?
+Fie on't? Oh fie, fie, 'tis an vnweeded Garden
+That growes to Seed: Things rank, and grosse in Nature
+Possesse it meerely. That it should come to this:
+But two months dead: Nay, not so much; not two,
+So excellent a King, that was to this
+Hiperion to a Satyre: so louing to my Mother,
+That he might not beteene the windes of heauen
+Visit her face too roughly. Heauen and Earth
+Must I remember: why she would hang on him,
+As if encrease of Appetite had growne
+By what is fed on; and yet within a month?
+Let me not thinke on't: Frailty, thy name is woman.
+A little Month, or ere those shooes were old,
+With which she followed my poore Fathers body
+Like Niobe, all teares. Why she, euen she.
+(O Heauen! A beast that wants discourse of Reason
+Would haue mourn'd longer) married with mine Vnkle,
+My Fathers Brother: but no more like my Father,
+Then I to Hercules. Within a Moneth?
+Ere yet the salt of most vnrighteous Teares
+Had left the flushing of her gauled eyes,
+She married. O most wicked speed, to post
+With such dexterity to Incestuous sheets:
+It is not, nor it cannot come to good.
+But breake my heart, for I must hold my tongue.
+Enter Horatio, Barnardo, and Marcellus.
+
+  Hor. Haile to your Lordship
+
+   Ham. I am glad to see you well:
+Horatio, or I do forget my selfe
+
+   Hor. The same my Lord,
+And your poore Seruant euer
+
+   Ham. Sir my good friend,
+Ile change that name with you:
+And what make you from Wittenberg Horatio?
+Marcellus
+
+   Mar. My good Lord
+
+   Ham. I am very glad to see you: good euen Sir.
+But what in faith make you from Wittemberge?
+  Hor. A truant disposition, good my Lord
+
+   Ham. I would not haue your Enemy say so;
+Nor shall you doe mine eare that violence,
+To make it truster of your owne report
+Against your selfe. I know you are no Truant:
+But what is your affaire in Elsenour?
+Wee'l teach you to drinke deepe, ere you depart
+
+   Hor. My Lord, I came to see your Fathers Funerall
+
+   Ham. I pray thee doe not mock me (fellow Student)
+I thinke it was to see my Mothers Wedding
+
+   Hor. Indeed my Lord, it followed hard vpon
+
+   Ham. Thrift thrift Horatio: the Funerall Bakt-meats
+Did coldly furnish forth the Marriage Tables;
+Would I had met my dearest foe in heauen,
+Ere I had euer seene that day Horatio.
+My father, me thinkes I see my father
+
+   Hor. Oh where my Lord?
+  Ham. In my minds eye (Horatio)
+  Hor. I saw him once; he was a goodly King
+
+   Ham. He was a man, take him for all in all:
+I shall not look vpon his like againe
+
+   Hor. My Lord, I thinke I saw him yesternight
+
+   Ham. Saw? Who?
+  Hor. My Lord, the King your Father
+
+   Ham. The King my Father?
+  Hor. Season your admiration for a while
+With an attent eare; till I may deliuer
+Vpon the witnesse of these Gentlemen,
+This maruell to you
+
+   Ham. For Heauens loue let me heare
+
+   Hor. Two nights together, had these Gentlemen
+(Marcellus and Barnardo) on their Watch
+In the dead wast and middle of the night
+Beene thus encountred. A figure like your Father,
+Arm'd at all points exactly, Cap a Pe,
+Appeares before them, and with sollemne march
+Goes slow and stately: By them thrice he walkt,
+By their opprest and feare-surprized eyes,
+Within his Truncheons length; whilst they bestil'd
+Almost to Ielly with the Act of feare,
+Stand dumbe and speake not to him. This to me
+In dreadfull secrecie impart they did,
+And I with them the third Night kept the Watch,
+Whereas they had deliuer'd both in time,
+Forme of the thing; each word made true and good,
+The Apparition comes. I knew your Father:
+These hands are not more like
+
+   Ham. But where was this?
+  Mar. My Lord vpon the platforme where we watcht
+
+   Ham. Did you not speake to it?
+  Hor. My Lord, I did;
+But answere made it none: yet once me thought
+It lifted vp it head, and did addresse
+It selfe to motion, like as it would speake:
+But euen then, the Morning Cocke crew lowd;
+And at the sound it shrunke in hast away,
+And vanisht from our sight
+
+   Ham. Tis very strange
+
+   Hor. As I doe liue my honourd Lord 'tis true;
+And we did thinke it writ downe in our duty
+To let you know of it
+
+   Ham. Indeed, indeed Sirs; but this troubles me.
+Hold you the watch to Night?
+  Both. We doe my Lord
+
+   Ham. Arm'd, say you?
+  Both. Arm'd, my Lord
+
+   Ham. From top to toe?
+  Both. My Lord, from head to foote
+
+   Ham. Then saw you not his face?
+  Hor. O yes, my Lord, he wore his Beauer vp
+
+   Ham. What, lookt he frowningly?
+  Hor. A countenance more in sorrow then in anger
+
+   Ham. Pale, or red?
+  Hor. Nay very pale
+
+   Ham. And fixt his eyes vpon you?
+  Hor. Most constantly
+
+   Ham. I would I had beene there
+
+   Hor. It would haue much amaz'd you
+
+   Ham. Very like, very like: staid it long?
+  Hor. While one with moderate hast might tell a hundred
+
+   All. Longer, longer
+
+   Hor. Not when I saw't
+
+   Ham. His Beard was grisly? no
+
+   Hor. It was, as I haue seene it in his life,
+A Sable Siluer'd
+
+   Ham. Ile watch to Night; perchance 'twill wake againe
+
+   Hor. I warrant you it will
+
+   Ham. If it assume my noble Fathers person,
+Ile speake to it, though Hell it selfe should gape
+And bid me hold my peace. I pray you all,
+If you haue hitherto conceald this sight;
+Let it bee treble in your silence still:
+And whatsoeuer els shall hap to night,
+Giue it an vnderstanding but no tongue;
+I will requite your loues; so fare ye well:
+Vpon the Platforme twixt eleuen and twelue,
+Ile visit you
+
+   All. Our duty to your Honour.
+
+Exeunt
+
+   Ham. Your loue, as mine to you: farewell.
+My Fathers Spirit in Armes? All is not well:
+I doubt some foule play: would the Night were come;
+Till then sit still my soule; foule deeds will rise,
+Though all the earth orewhelm them to mens eies.
+Enter.
+
+
+Scena Tertia
+
+
+Enter Laertes and Ophelia.
+
+  Laer. My necessaries are imbark't; Farewell:
+And Sister, as the Winds giue Benefit,
+And Conuoy is assistant; doe not sleepe,
+But let me heare from you
+
+   Ophel. Doe you doubt that?
+  Laer. For Hamlet, and the trifling of his fauours,
+Hold it a fashion and a toy in Bloude;
+A Violet in the youth of Primy Nature;
+Froward, not permanent; sweet not lasting
+The suppliance of a minute? No more
+
+   Ophel. No more but so
+
+   Laer. Thinke it no more:
+For nature cressant does not grow alone,
+In thewes and Bulke: but as his Temple waxes,
+The inward seruice of the Minde and Soule
+Growes wide withall. Perhaps he loues you now,
+And now no soyle nor cautell doth besmerch
+The vertue of his feare: but you must feare
+His greatnesse weigh'd, his will is not his owne;
+For hee himselfe is subiect to his Birth:
+Hee may not, as vnuallued persons doe,
+Carue for himselfe; for, on his choyce depends
+The sanctity and health of the whole State.
+And therefore must his choyce be circumscrib'd
+Vnto the voyce and yeelding of that Body,
+Whereof he is the Head. Then if he sayes he loues you,
+It fits your wisedome so farre to beleeue it;
+As he in his peculiar Sect and force
+May giue his saying deed: which is no further,
+Then the maine voyce of Denmarke goes withall.
+Then weight what losse your Honour may sustaine,
+If with too credent eare you list his Songs;
+Or lose your Heart; or your chast Treasure open
+To his vnmastred importunity.
+Feare it Ophelia, feare it my deare Sister,
+And keepe within the reare of your Affection;
+Out of the shot and danger of Desire.
+The chariest Maid is Prodigall enough,
+If she vnmaske her beauty to the Moone:
+Vertue it selfe scapes not calumnious stroakes,
+The Canker Galls, the Infants of the Spring
+Too oft before the buttons be disclos'd,
+And in the Morne and liquid dew of Youth,
+Contagious blastments are most imminent.
+Be wary then, best safety lies in feare;
+Youth to it selfe rebels, though none else neere
+
+   Ophe. I shall th' effect of this good Lesson keepe,
+As watchmen to my heart: but good my Brother
+Doe not as some vngracious Pastors doe,
+Shew me the steepe and thorny way to Heauen;
+Whilst like a puft and recklesse Libertine
+Himselfe, the Primrose path of dalliance treads,
+And reaks not his owne reade
+
+   Laer. Oh, feare me not.
+Enter Polonius.
+
+I stay too long; but here my Father comes:
+A double blessing is a double grace;
+Occasion smiles vpon a second leaue
+
+   Polon. Yet heere Laertes? Aboord, aboord for shame,
+The winde sits in the shoulder of your saile,
+And you are staid for there: my blessing with you;
+And these few Precepts in thy memory,
+See thou Character. Giue thy thoughts no tongue,
+Nor any vnproportion'd thoughts his Act:
+Be thou familiar; but by no meanes vulgar:
+The friends thou hast, and their adoption tride,
+Grapple them to thy Soule, with hoopes of Steele:
+But doe not dull thy palme, with entertainment
+Of each vnhatch't, vnfledg'd Comrade. Beware
+Of entrance to a quarrell: but being in
+Bear't that th' opposed may beware of thee.
+Giue euery man thine eare; but few thy voyce:
+Take each mans censure; but reserue thy iudgement:
+Costly thy habit as thy purse can buy;
+But not exprest in fancie; rich, not gawdie:
+For the Apparell oft proclaimes the man.
+And they in France of the best ranck and station,
+Are of a most select and generous cheff in that.
+Neither a borrower, nor a lender be;
+For lone oft loses both it selfe and friend:
+And borrowing duls the edge of Husbandry.
+This aboue all; to thine owne selfe be true:
+And it must follow, as the Night the Day,
+Thou canst not then be false to any man.
+Farewell: my Blessing season this in thee
+
+   Laer. Most humbly doe I take my leaue, my Lord
+
+   Polon. The time inuites you, goe, your seruants tend
+
+   Laer. Farewell Ophelia, and remember well
+What I haue said to you
+
+   Ophe. Tis in my memory lockt,
+And you your selfe shall keepe the key of it
+
+   Laer. Farewell.
+
+Exit Laer.
+
+  Polon. What ist Ophelia he hath said to you?
+  Ophe. So please you, somthing touching the L[ord]. Hamlet
+
+   Polon. Marry, well bethought:
+Tis told me he hath very oft of late
+Giuen priuate time to you; and you your selfe
+Haue of your audience beene most free and bounteous.
+If it be so, as so tis put on me;
+And that in way of caution: I must tell you,
+You doe not vnderstand your selfe so cleerely,
+As it behoues my Daughter, and your Honour.
+What is betweene you, giue me vp the truth?
+  Ophe. He hath my Lord of late, made many tenders
+Of his affection to me
+
+   Polon. Affection, puh. You speake like a greene Girle,
+Vnsifted in such perillous Circumstance.
+Doe you beleeue his tenders, as you call them?
+  Ophe. I do not know, my Lord, what I should thinke
+
+   Polon. Marry Ile teach you; thinke your selfe a Baby,
+That you haue tane his tenders for true pay,
+Which are not starling. Tender your selfe more dearly;
+Or not to crack the winde of the poore Phrase,
+Roaming it thus, you'l tender me a foole
+
+   Ophe. My Lord, he hath importun'd me with loue,
+In honourable fashion
+
+   Polon. I, fashion you may call it, go too, go too
+
+   Ophe. And hath giuen countenance to his speech,
+My Lord, with all the vowes of Heauen
+
+   Polon. I, Springes to catch Woodcocks. I doe know
+When the Bloud burnes, how Prodigall the Soule
+Giues the tongue vowes: these blazes, Daughter,
+Giuing more light then heate; extinct in both,
+Euen in their promise, as it is a making;
+You must not take for fire. For this time Daughter,
+Be somewhat scanter of your Maiden presence;
+Set your entreatments at a higher rate,
+Then a command to parley. For Lord Hamlet,
+Beleeue so much in him, that he is young,
+And with a larger tether may he walke,
+Then may be giuen you. In few, Ophelia,
+Doe not beleeue his vowes; for they are Broakers,
+Not of the eye, which their Inuestments show:
+But meere implorators of vnholy Sutes,
+Breathing like sanctified and pious bonds,
+The better to beguile. This is for all:
+I would not, in plaine tearmes, from this time forth,
+Haue you so slander any moment leisure,
+As to giue words or talke with the Lord Hamlet:
+Looke too't, I charge you; come your wayes
+
+   Ophe. I shall obey my Lord.
+
+Exeunt.
+
+Enter Hamlet, Horatio, Marcellus.
+
+  Ham. The Ayre bites shrewdly: is it very cold?
+  Hor. It is a nipping and an eager ayre
+
+   Ham. What hower now?
+  Hor. I thinke it lacks of twelue
+
+   Mar. No, it is strooke
+
+   Hor. Indeed I heard it not: then it drawes neere the season,
+Wherein the Spirit held his wont to walke.
+What does this meane my Lord?
+  Ham. The King doth wake to night, and takes his rouse,
+Keepes wassels and the swaggering vpspring reeles,
+And as he dreines his draughts of Renish downe,
+The kettle Drum and Trumpet thus bray out
+The triumph of his Pledge
+
+   Horat. Is it a custome?
+  Ham. I marry ist;
+And to my mind, though I am natiue heere,
+And to the manner borne: It is a Custome
+More honour'd in the breach, then the obseruance.
+Enter Ghost.
+
+  Hor. Looke my Lord, it comes
+
+   Ham. Angels and Ministers of Grace defend vs:
+Be thou a Spirit of health, or Goblin damn'd,
+Bring with thee ayres from Heauen, or blasts from Hell,
+Be thy euents wicked or charitable,
+Thou com'st in such a questionable shape
+That I will speake to thee. Ile call thee Hamlet,
+King, Father, Royall Dane: Oh, oh, answer me,
+Let me not burst in Ignorance; but tell
+Why thy Canoniz'd bones Hearsed in death,
+Haue burst their cerments, why the Sepulcher
+Wherein we saw thee quietly enurn'd,
+Hath op'd his ponderous and Marble iawes,
+To cast thee vp againe? What may this meane?
+That thou dead Coarse againe in compleat steele,
+Reuisits thus the glimpses of the Moone,
+Making Night hidious? And we fooles of Nature,
+So horridly to shake our disposition,
+With thoughts beyond thee; reaches of our Soules,
+Say, why is this? wherefore? what should we doe?
+
+Ghost beckens Hamlet.
+
+  Hor. It beckons you to goe away with it,
+As if it some impartment did desire
+To you alone
+
+   Mar. Looke with what courteous action
+It wafts you to a more remoued ground:
+But doe not goe with it
+
+   Hor. No, by no meanes
+
+   Ham. It will not speake: then will I follow it
+
+   Hor. Doe not my Lord
+
+   Ham. Why, what should be the feare?
+I doe not set my life at a pins fee;
+And for my Soule, what can it doe to that?
+Being a thing immortall as it selfe:
+It waues me forth againe; Ile follow it
+
+   Hor. What if it tempt you toward the Floud my Lord?
+Or to the dreadfull Sonnet of the Cliffe,
+That beetles o're his base into the Sea,
+And there assumes some other horrible forme,
+Which might depriue your Soueraignty of Reason,
+And draw you into madnesse thinke of it?
+  Ham. It wafts me still: goe on, Ile follow thee
+
+   Mar. You shall not goe my Lord
+
+   Ham. Hold off your hand
+
+   Hor. Be rul'd, you shall not goe
+
+   Ham. My fate cries out,
+And makes each petty Artire in this body,
+As hardy as the Nemian Lions nerue:
+Still am I cal'd? Vnhand me Gentlemen:
+By Heau'n, Ile make a Ghost of him that lets me:
+I say away, goe on, Ile follow thee.
+
+Exeunt. Ghost & Hamlet.
+
+  Hor. He waxes desperate with imagination
+
+   Mar. Let's follow; 'tis not fit thus to obey him
+
+   Hor. Haue after, to what issue will this come?
+  Mar. Something is rotten in the State of Denmarke
+
+   Hor. Heauen will direct it
+
+   Mar. Nay, let's follow him.
+
+Exeunt.
+
+Enter Ghost and Hamlet.
+
+  Ham. Where wilt thou lead me? speak; Ile go no further
+
+   Gho. Marke me
