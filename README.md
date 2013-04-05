@@ -8,8 +8,17 @@ To install the library on the system, run:
 
     $ sudo python setup.py install
 
+Package functionality
+---------------------
+
+This package provides a python library proving the following functionality:
+* Suffix Array
+* LZ Factorisor
+
 Using the package
 -----------------
+
+* [Suffix Array]{suffixarray.md}
 
 The following example illustrates to instantiate a suffix array from supplied string and store it in a string:
 
