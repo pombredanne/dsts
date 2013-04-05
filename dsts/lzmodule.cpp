@@ -33,13 +33,13 @@ static PyObject* factorise(PyObject* self, PyObject* args)
     for(int i = 0; i < offsets.size() - 1; i++) // Print the lz factors
        if (lengths[i] != 0)
        {
-           cout << "(" << offsets[i] << "," << lengths[i] << ")" << endl;
+           // cout << "(" << offsets[i] << "," << lengths[i] << ")" << endl;
 	   PyTuple_SetItem(tuple, i, Py_BuildValue("ii", offsets[i], lengths[i]));
        }
     
        else  // when length is zero we are storing a char instead of an offset
        {
-           cout << "(" << (unsigned char)offsets[i] << "," << lengths[i] << ")" << endl;
+           // cout << "(" << (unsigned char)offsets[i] << "," << lengths[i] << ")" << endl;
 	   PyTuple_SetItem(tuple, i, Py_BuildValue("ci", (unsigned char)offsets[i], lengths[i]));
        }
 
