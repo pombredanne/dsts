@@ -3,6 +3,7 @@
 *.py~
 *.md~
 .Python
+*.so
 
 # Created by distutils or venv
 build/
