@@ -1,5 +1,5 @@
-Usage Instructions: Suffix Array usage
-======================================
+Usage Instructions: Suffix Array
+================================
 
 The following example illustrates to instantiate a suffix array from supplied string and store it in a string:
 
