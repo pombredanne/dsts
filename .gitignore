@@ -14,4 +14,4 @@ include/
 bin/
 tmp/
 dist/
-dsts.egg-info/
+*.egg-info/
