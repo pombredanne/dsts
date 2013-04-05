@@ -19,6 +19,7 @@ Using the package
 -----------------
 
 * [Suffix Array](doc/suffixarray.md)
+* [LZ factorisation](doc/lzfactorisation.md)
 
 
 Installing the development environment
