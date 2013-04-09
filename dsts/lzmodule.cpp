@@ -23,6 +23,12 @@ static PyObject* factorise(PyObject* self, PyObject* args)
     if (!PyArg_ParseTuple(args, "s#", &str, &numofbytes))
         return NULL;
 
+    if (numofbytes == 0)
+        {
+        PyErr_SetString(PyExc_TypeError, "Empty byte stream provided");
+        return NULL; 
+	}
+
     vector<LONGINT> offsets; // Store the factor offsets
     vector<LONGINT> lengths; // Store the length offsets
 
