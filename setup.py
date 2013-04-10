@@ -11,7 +11,7 @@ lz = Extension('dsts.lz', include_dirs=['dsts/external/dstc/lzOG/src/', 'dsts/ex
 # When this script is run, we want to unsure that the distc package is installed
 # The distc package has C++ code that is required when building the lz extension
 if not exists("dsts/external/dstsc/SAIS-SK/") or not exists("dsts/external/dstsc/lzOG/"):
-    call(["git", "submodule", "foreach", "git", "pull"])
+    call(["git", "submodule", "update", "--init"])
 
 setup(name="dsts",
       version="0.6",
