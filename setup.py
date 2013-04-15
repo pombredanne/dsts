@@ -3,6 +3,11 @@ from setuptools import setup, Extension
 from os.path import exists
 from subprocess import call
 
+sa = Extension('dsts.sa', include_dirs=['dsts/external/dstc/SAIS-SK/src/'],
+               sources=['dsts/samodule.cpp', 'dsts/external/dstsc/SAIS-SK/src/mmap.cpp',
+                        'dsts/external/dstsc/SAIS-SK/src/fileopen.cpp', 'dsts/external/dstsc/SAIS-SK/src/gt-alloc.cpp',
+                        'dsts/external/dstsc/SAIS-SK/src/sk-sain.cpp'])
+
 lz = Extension('dsts.lz', include_dirs=['dsts/external/dstc/lzOG/src/', 'dsts/external/dstc/SAIS-SK/src/'],
                sources=['dsts/lzmodule.cpp', 'dsts/external/dstsc/lzOG/src/lzOG.cpp', 'dsts/external/dstsc/SAIS-SK/src/mmap.cpp',
                         'dsts/external/dstsc/SAIS-SK/src/fileopen.cpp', 'dsts/external/dstsc/SAIS-SK/src/gt-alloc.cpp',
@@ -20,5 +25,5 @@ setup(name="dsts",
       author_email="angelos.molfetas@unimelb.edu.au",
       packages=['dsts'],
       long_description="Python data structures. Suffix array Construction Algorithm, Rabin & Karp fingerprint generator, LZ factorisor.",
-      ext_modules=[lz],
+      ext_modules=[lz, sa],
       )

@@ -54,7 +54,7 @@ static PyObject* factorise(PyObject* self, PyObject* args)
  
 static PyMethodDef LzMethods[] =
 {
-     {"factorise", factorise, METH_VARARGS, "Greet somebody."},
+     {"factorise", factorise, METH_VARARGS},
      {NULL, NULL, 0, NULL}
 };
  

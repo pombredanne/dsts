@@ -9,6 +9,7 @@
 
 from pprint import pprint
 from operator import itemgetter
+from dsts.sa import sort
 
 
 class SuffixArray:
@@ -17,7 +18,10 @@ class SuffixArray:
         """ Constructor, builds and sorts the array
         string: string to process
         """
-        self.str = string
+        if isinstance(string, unicode):
+            self.str = string.encode("utf8")
+        else:
+            self.str = string
         self.generate_suffix_array()
 
     def __str__(self):
@@ -26,8 +30,7 @@ class SuffixArray:
 
     def generate_suffix_array(self):
         """ Generates the suffix and lcp array """
-        self.suffix_array = range(len(self.str))
-        self.suffix_array.sort(self._sarray_sort)
+        self.suffix_array = sort(self.str)
         self.derive_lcp_array()
 
     def derive_lcp_array(self):
@@ -51,15 +54,6 @@ class SuffixArray:
     def get_lcp_array(self):
         """ Return Long Common Prefix array """
         return self.lcp_array
-
-    def _sarray_sort(self, x, y):
-        """ Sort two integers by comparing substrings in document string """
-        if self.str[x:] > self.str[y:]:
-            return 1
-        elif self.str[x:] == self.str[y:]:
-            return 0
-        else:
-            return -1
 
     def return_array_as_string(self):
         """ Return the contents of the array """
@@ -94,20 +88,6 @@ class SuffixArray:
         for i in range(len(self.suffix_array)):
             tmp_array.append(self.str[self.get_pos(i):])
         return tmp_array
-
-    def add_to_suffix_array_right(self, substr):
-        """ Adds a substring to the suffix array. Requires resorting the
-            suffix array and recaculating the lcp array, which is done in
-            O(n+m), where n is the size of the original string and m is
-            the size of substr.
-        """
-        start_pos = len(self.str)
-        self.str += substr
-        end_pos = len(self.str)
-        for i in range(start_pos, end_pos):
-            self.suffix_array.insert(self.find_SA_pos(self.str[i:]), i)
-        self.suffix_array.sort(self._sarray_sort)
-        self.derive_lcp_array()
 
     # Search functions
 
@@ -219,61 +199,3 @@ class SuffixArray:
                 elif duplicates[end_first_str][2] < length:  # if length of previous value is smaller replace
                     duplicates[end_first_str] = (first_str, secon_str, length)
         print duplicates
-
-
-class ReverseSuffixArray(SuffixArray):
-    """ Suffix Array variant. Suffix Array offsets are instead stored right to left of the source string.
-        This means that translating positions in the suffix array into positions in the original string is slower
-        as a transform needs to be applied, however, inserting more characters into the suffix array is more efficient
-    """
-    def generate_suffix_array(self):
-        """ Generates the suffix and lcp array """
-        self.suffix_array = range(len(self.str) - 1, -1, -1)
-        self.suffix_array.sort(self._sarray_sort)
-        self.derive_lcp_array()
-
-    def get_pos(self, pos):
-        """ Returns the position of the suffix array element in the original string """
-        return (len(self.str) - 1) - self.suffix_array[pos]
-
-    def get_pos_reverse(self, pos):
-        """ Returns the position of the suffix array element in the original string in relation to the end of the string """
-        return self.suffix_array[pos]
-
-    def _sarray_sort(self, x, y):
-        """ Sort two integers by comparing substrings in document string """
-        x = (len(self.str) - 1) - x
-        y = (len(self.str) - 1) - y
-
-        if self.str[x:] > self.str[y:]:
-            return 1
-        elif self.str[x:] == self.str[y:]:
-            return 0
-        else:
-            return -1
-
-    def add_to_suffix_array_left(self, substr):
-        """ Adds a substring to the suffix array """
-        previous_size = len(self.str)
-        self.str = substr + self.str
-        for i in range(0, len(substr)):
-            # Add new suffix into SA
-            STR_pos = (len(self.str) - 1) - i
-            SA_pos = self.find_SA_pos(self.str[i:])
-            self.suffix_array.insert(SA_pos, STR_pos)
-            # Update LCP array
-            if SA_pos == 0:  # if it is in the beginning of the LCP array
-                self.lcp_array.insert(0, -1)  # Change 1st item to -1
-                string1 = self.str[self.get_pos(0):]
-                string2 = self.str[self.get_pos(1):]
-                self.lcp_array[1] = self.compare_strings(string1, string2)  # Update 2nd item from -1
-            elif SA_pos == (len(self.suffix_array) - 1):  # if at the end of the Suffix Array
-                string1 = self.str[self.get_pos(SA_pos):]
-                string2 = self.str[self.get_pos(SA_pos - 1):]
-                self.lcp_array.insert(SA_pos, self.compare_strings(string1, string2))
-            else:  # if it is inserted somewhere in the middle of the Suffix Array
-                string1 = self.str[self.get_pos(SA_pos):]
-                string2 = self.str[self.get_pos(SA_pos - 1):]
-                self.lcp_array.insert(SA_pos, self.compare_strings(string1, string2))
-                string2 = self.str[self.get_pos(SA_pos + 1):]
-                self.lcp_array[SA_pos + 1] = self.compare_strings(string1, string2)
