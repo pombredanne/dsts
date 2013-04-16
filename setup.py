@@ -19,7 +19,7 @@ if not exists("dsts/external/dstsc/SAIS-SK/") or not exists("dsts/external/dstsc
     call(["git", "submodule", "update", "--init"])
 
 setup(name="dsts",
-      version="0.6",
+      version="0.7",
       description="Python data structures.",
       author="Angelos Molfetas",
       author_email="angelos.molfetas@unimelb.edu.au",
