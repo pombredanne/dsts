@@ -41,25 +41,15 @@ class RK_hash_generator:
         self.chars.append(next_char)
         return self.prev_hash % self.hash_range
 
-#    def ind_hash(self, byte_sequence):
-#        """ Calculates hash of byte sequence """
-#        h = 0      # initial hash value, starts at zero
-#        d = 256    # constant, and following Reichenberger is set at 256
-#        i = 0      # counter
-#        j = 0      # counter
-#        for byte in byte_sequence:
-#            h = (h * d + ord(byte)) % self.hash_range
-#        return h
-
     def hash_block(self, byte_sequence):
         """ Calculates hash of byte sequence """
-        if len(byte_sequence) != self.block_size:
-            raise BufferError('Byte sequence is %s long instead of %s' % (len(byte_sequence), self.block_size))
+        #if len(byte_sequence) != self.block_size:
+        #    raise BufferError('Byte sequence is %s long instead of %s' % (len(byte_sequence), self.block_size))
         return self._hash_block_unconstrained(byte_sequence) % self.hash_range
 
     def hash_block_with_history(self, byte_sequence):
         """ Calculate hash of byte sequence """
-        if len(byte_sequence) != self.block_size:
+        if len(byte_sequence) != self.block_size:  # length of byte sequence must match specified block size
             raise BufferError('Byte sequence is %s long instead of %s' % (len(byte_sequence), self.block_size))
         self.prev_hash = self._hash_block_unconstrained(byte_sequence)
         self.chars = Queue()  # Queue is used to store history

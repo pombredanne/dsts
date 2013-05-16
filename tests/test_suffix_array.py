@@ -83,15 +83,17 @@ class TestSuffixArray:
         """ SARRAY: Search for all instances of a substring """
         sa = SuffixArray(string='z123ABC123CBA256123')
         assert_equal(sa.search_all('ABC'), [4])
-        assert_equal(sa.search_all('123'), [7, 1, 16])
+        assert_equal(sa.search_all('123'), [16, 7, 1])
         assert_equal(sa.search_all('z'), [0])
         assert_equal(sa.search_all('x'), [])
 
     def test_suffix_array_item(self):
         """ SARRAY: Get suffix array items """
-        array = ['ab', 'abcadab', 'adab', 'b', 'bcadab', 'cadab', 'dab']
+        str = "abcadab"
+        sa = SuffixArray(str)
+        expected_array = ['ab', 'abcadab', 'adab', 'b', 'bcadab', 'cadab', 'dab']
         for i in range(len(array)):
-            assert_equal(self.sarray2.get_sarray_item(i), array[i])
+            assert_equal(expected_array[i], array[i])
 
     def test_lcp_array(self):
         """ SARRAY: Check validity of LCP array """
