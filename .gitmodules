@@ -1,3 +1,3 @@
 [submodule "dsts/external/dstsc"]
 	path = dsts/external/dstsc
-	url = git@github.com:Ichindar/dstsc.git
+	url = https://github.com/Ichindar/dstsc.git
